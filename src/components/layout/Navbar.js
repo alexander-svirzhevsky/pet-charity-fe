@@ -6,7 +6,7 @@ const Navbar = () => {
     <div>
       <ul>
         <li>
-          <Link to="/register">Register</Link>
+          <Link to="/register">Sign Up</Link>
         </li>
       </ul>
     </div>
