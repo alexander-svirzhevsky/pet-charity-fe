@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { Form, Input, Button } from "antd";
 
-import { register } from "../../redux/actions/auth";
+import { register } from "../../redux/thunks/auth";
 import RegisterImg from "../../assets/images/register.png";
+import { Container } from "../shared/layout";
 
 const RegisterWrapper = styled.div`
   width: 100%;
@@ -15,12 +16,6 @@ const RegisterWrapper = styled.div`
   text-align: center;
   justify-content: center;
   background-color: #f7fbff;
-`;
-
-const Container = styled.div`
-  width: 50%;
-  max-width: 900px;
-  margin: 0 auto;
 `;
 
 const Btn = styled(Button)`
@@ -50,12 +45,8 @@ const Register = () => {
 
   const { name, email, password, password2 } = formData;
 
-  const onChange = (e) => {
-    return setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onFinish = async (values) => {
     if (password !== password2) {
@@ -66,94 +57,89 @@ const Register = () => {
   };
 
   return (
-    <>
-      <RegisterWrapper>
-        <Container>
-          <Form
-            name="basic"
-            initialValues={{
-              remember: true,
-            }}
-            onFinish={onFinish}
-            onFinishFailed={console.log("error")}
+    <RegisterWrapper>
+      <Container>
+        <Form
+          name="basic"
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
+          onFinishFailed={console.log("error")}
+        >
+          <Form.Item
+            label="Username"
+            name="name"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
           >
-            <Form.Item
-              label="Username"
+            <Input
+              onChange={onChange}
+              value={name}
+              type="text"
               name="name"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input
-                onChange={(e) => onChange(e)}
-                value={name}
-                type="text"
-                name="name"
-                placeholder="Name"
-              />
-            </Form.Item>
-            <Form.Item
-              label="Email"
+              placeholder="Name"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={email}
+              type="email"
               name="email"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input
-                onChange={(e) => onChange(e)}
-                value={email}
-                type="email"
-                name="email"
-                placeholder="Email"
-              />
-            </Form.Item>
+              placeholder="Email"
+            />
+          </Form.Item>
 
-            <Form.Item
-              label="Password"
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input.Password
+              onChange={onChange}
+              value={password}
+              type="password"
               name="password"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input.Password
-                onChange={(e) => onChange(e)}
-                value={password}
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
-            </Form.Item>
-            <Form.Item
-              label="Password2"
+              placeholder="Password"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Password2"
+            name="password2"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input.Password
+              onChange={onChange}
+              value={password2}
+              type="password2"
               name="password2"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input.Password
-                onChange={(e) => onChange(e)}
-                value={password2}
-                type="password2"
-                name="password2"
-                placeholder="Confirm password"
-              />
-            </Form.Item>
-            {/* <Button htmlType="submit" type="primary">
-              Register
-            </Button> */}
-            <Btn htmlType="submit">Register</Btn>
-          </Form>
-        </Container>
-      </RegisterWrapper>
-    </>
+              placeholder="Confirm password"
+            />
+          </Form.Item>
+          <Btn htmlType="submit">Register</Btn>
+        </Form>
+      </Container>
+    </RegisterWrapper>
   );
 };
 

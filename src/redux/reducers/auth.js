@@ -11,14 +11,12 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case REGISTER_SUCCESS:
-      localStorage.setItem("token", payload.token);
       return {
         ...state,
         ...payload,
         isAuthenticated: true,
       };
     case REGISTER_FAIL:
-      localStorage.removeItem("token");
       return {
         ...state,
         isAuthenticated: false,

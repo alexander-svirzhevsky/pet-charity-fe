@@ -1,24 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./assets/font/font.css";
 import App from "./App";
-import { createGlobalStyle } from "styled-components";
 
+import { Wrapper } from "./components/shared/layout";
 import "./index.css";
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-
-  };
-  #root {
-    height: 100vh;
-  }
-`;
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    <GlobalStyle />
+    <Wrapper>
+      <App />
+    </Wrapper>
   </React.StrictMode>,
   document.getElementById("root")
 );
