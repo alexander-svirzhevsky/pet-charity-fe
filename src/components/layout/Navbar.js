@@ -23,15 +23,15 @@ const Container = styled.div`
 const Navbar = () => {
   return (
     <>
-      <Container>
-        <Header>
+      <Header>
+        <Container>
           <ul>
             <li>
               <Link to="/register">Sign Up</Link>
             </li>
           </ul>
-        </Header>
-      </Container>
+        </Container>
+      </Header>
     </>
 
     // <Header>

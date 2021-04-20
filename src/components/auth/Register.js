@@ -18,9 +18,24 @@ const RegisterWrapper = styled.div`
 `;
 
 const Container = styled.div`
-  width: 95%;
+  width: 50%;
   max-width: 900px;
   margin: 0 auto;
+`;
+
+const Btn = styled(Button)`
+  padding: 20px 50px;
+  background-color: #f2726f;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  &:hover {
+    color: #f2726f;
+  }
 `;
 
 const Register = () => {
@@ -42,9 +57,7 @@ const Register = () => {
     });
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-
+  const onFinish = async (values) => {
     if (password !== password2) {
       console.log("Passwaord do not match");
     } else {
@@ -56,11 +69,13 @@ const Register = () => {
     <>
       <RegisterWrapper>
         <Container>
-          <form
-            onSubmit={(e) => onSubmit(e)}
+          <Form
+            name="basic"
             initialValues={{
               remember: true,
             }}
+            onFinish={onFinish}
+            onFinishFailed={console.log("error")}
           >
             <Form.Item
               label="Username"
@@ -115,7 +130,7 @@ const Register = () => {
               />
             </Form.Item>
             <Form.Item
-              label="password2"
+              label="Password2"
               name="password2"
               rules={[
                 {
@@ -131,10 +146,11 @@ const Register = () => {
                 placeholder="Confirm password"
               />
             </Form.Item>
-            <Button htmlType="submit" type="primary">
+            {/* <Button htmlType="submit" type="primary">
               Register
-            </Button>
-          </form>
+            </Button> */}
+            <Btn htmlType="submit">Register</Btn>
+          </Form>
         </Container>
       </RegisterWrapper>
     </>
