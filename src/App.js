@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "antd/dist/antd.css";
+import styled from "styled-components";
 
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
