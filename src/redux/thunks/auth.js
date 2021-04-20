@@ -8,16 +8,13 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     const res = await axios.post("/api/users", body);
     console.log(res);
 
-    if (res.status === 200) {
-      localStorage.setItem("token", res.headers.authorization);
-    }
+    localStorage.setItem("token", res.headers.authorization);
 
     dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data,
     });
   } catch (error) {
-    localStorage.removeItem("token");
     dispatch({
       type: REGISTER_FAIL,
     });
