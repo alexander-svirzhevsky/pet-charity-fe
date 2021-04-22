@@ -27,8 +27,6 @@ const Login = () => {
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  // const value = useSelector(state => state.value);
-
   if (isAuthenticated) {
     return <Redirect to="/" />;
   }

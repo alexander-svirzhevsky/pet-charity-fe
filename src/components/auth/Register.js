@@ -25,7 +25,7 @@ const Register = () => {
 
   const onFinish = async (values) => {
     if (password !== password2) {
-      console.log("Passwaord do not match");
+      console.log("Passwaord do not match", "danger");
     } else {
       dispatch(register({ name, email, password }), []);
     }
