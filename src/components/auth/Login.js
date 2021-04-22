@@ -1,37 +1,33 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { Form, Input } from "antd";
+import { Form, Input, Button } from "antd";
 
-import { register } from "../../redux/thunks/auth";
+import { login } from "../../redux/thunks/auth";
 import { Container, Title } from "../shared/layout";
 import { RegisterWrapper, Btn } from "../shared/auth";
 
-const Register = () => {
+const Login = () => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
-    password2: "",
   });
 
-  const { name, email, password, password2 } = formData;
+  const { email, password } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onFinish = async (values) => {
-    if (password !== password2) {
-      console.log("Passwaord do not match");
-    } else {
-      dispatch(register({ name, email, password }), []);
-    }
+    dispatch(login({ email, password }));
   };
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  // const value = useSelector(state => state.value);
 
   if (isAuthenticated) {
     return <Redirect to="/" />;
@@ -40,7 +36,7 @@ const Register = () => {
   return (
     <RegisterWrapper>
       <Container>
-        <Title>Register</Title>
+        <Title>Log in</Title>
         <Form
           name="basic"
           initialValues={{
@@ -49,23 +45,6 @@ const Register = () => {
           onFinish={onFinish}
           onFinishFailed={console.log("error")}
         >
-          <Form.Item
-            label="Username"
-            name="name"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input
-              onChange={onChange}
-              value={name}
-              type="text"
-              name="name"
-              placeholder="Name"
-            />
-          </Form.Item>
           <Form.Item
             label="Email"
             name="email"
@@ -101,28 +80,11 @@ const Register = () => {
               placeholder="Password"
             />
           </Form.Item>
-          <Form.Item
-            label="Password2"
-            name="password2"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input.Password
-              onChange={onChange}
-              value={password2}
-              type="password2"
-              name="password2"
-              placeholder="Confirm password"
-            />
-          </Form.Item>
-          <Btn htmlType="submit">Register</Btn>
+          <Btn htmlType="submit">Log in</Btn>
         </Form>
       </Container>
     </RegisterWrapper>
   );
 };
 
-export default Register;
+export default Login;
