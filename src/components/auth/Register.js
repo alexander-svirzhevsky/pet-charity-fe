@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import styled from "styled-components";
-import { Form, Input } from "antd";
+import { Form, Input, message } from "antd";
 
 import { register } from "../../redux/thunks/auth";
 import { Container, Title } from "../shared/layout";
@@ -23,11 +22,11 @@ const Register = () => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onFinish = async (values) => {
+  const onFinish = () => {
     if (password !== password2) {
-      console.log("Passwaord do not match", "danger");
+      message.error("Password do not match");
     } else {
-      dispatch(register({ name, email, password }), []);
+      dispatch(register({ name, email, password }));
     }
   };
 

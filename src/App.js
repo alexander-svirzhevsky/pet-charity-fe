@@ -1,17 +1,15 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "antd/dist/antd.css";
-import styled from "styled-components";
+import setAuthToken from "./redux/helper/setAuthToken";
+import { loadUser } from "./redux/thunks/auth";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import setAuthToken from "./redux/helper/setAuthToken";
-import { loadUser } from "./redux/thunks/auth";
-
-import { Provider } from "react-redux";
-import store from "./redux/store";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);

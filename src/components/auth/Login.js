@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
-import { Form, Input, Button } from "antd";
+import { Form, Input } from "antd";
 
 import { login } from "../../redux/thunks/auth";
 import { Container, Title } from "../shared/layout";
@@ -21,7 +20,7 @@ const Login = () => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onFinish = async (values) => {
+  const onFinish = () => {
     dispatch(login({ email, password }));
   };
 
@@ -41,7 +40,6 @@ const Login = () => {
             remember: true,
           }}
           onFinish={onFinish}
-          onFinishFailed={console.log("error")}
         >
           <Form.Item
             label="Email"
@@ -49,6 +47,7 @@ const Login = () => {
             rules={[
               {
                 required: true,
+                message: "Please input your email!",
               },
             ]}
           >

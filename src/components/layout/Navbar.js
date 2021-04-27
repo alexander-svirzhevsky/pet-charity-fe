@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { logout } from "../../redux/thunks/auth";
 import { Container } from "../shared/layout";
+import NavbarItem from "../shared/NavbarItem";
 
 const Header = styled.header`
   padding: 20px 20px;
@@ -24,10 +24,6 @@ const Account = styled.ul`
   justify-content: flex-end;
 `;
 
-const Item = styled.li`
-  margin-right: 10px;
-`;
-
 const Navbar = () => {
   const dispatch = useDispatch();
 
@@ -35,29 +31,19 @@ const Navbar = () => {
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  const authLinks = (
-    <Item>
-      <a onClick={logOut} href="#!">
-        Logout
-      </a>
-    </Item>
-  );
-
-  const guestLinks = (
-    <>
-      <Item>
-        <Link to="/register">Sign Up</Link>
-      </Item>
-      <Item>
-        <Link to="/login">Sign In</Link>
-      </Item>
-    </>
-  );
-
   return (
     <Header>
       <Container>
-        <Account>{isAuthenticated ? authLinks : guestLinks}</Account>
+        <Account>
+          {isAuthenticated ? (
+            <NavbarItem onClick={logOut} to="#" text="logout"></NavbarItem>
+          ) : (
+            <>
+              <NavbarItem to="/register" text="sign up" />
+              <NavbarItem to="/login" text="sign in" />
+            </>
+          )}
+        </Account>
       </Container>
     </Header>
   );
