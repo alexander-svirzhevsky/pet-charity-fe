@@ -12,4 +12,11 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
-export { Container, Wrapper };
+const Title = styled.h1`
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 42px;
+  margin-bottom: 40px;
+`;
+
+export { Container, Wrapper, Title };
