@@ -7,15 +7,12 @@ import { Container } from "../shared/layout";
 import NavbarItem from "../shared/NavbarItem";
 
 const Header = styled.header`
-  padding: 20px 20px;
-  background-color: #484c9a;
-  border-radius: 100px;
-  color: #fff;
-  position: absolute;
-  top: 0;
-  left: 0%;
-  right: 0%;
+  color: #002169;
+  font-size: 1.125rem;
+  font-weight: 800;
+  line-height: 28px;
   width: 100%;
+  border-bottom: 2px solid #efefef;
 `;
 
 const Account = styled.ul`
@@ -35,12 +32,14 @@ const Navbar = () => {
     <Header>
       <Container>
         <Account>
+          <NavbarItem to="/admin" text="Admin panel" />
+          <NavbarItem to="/adopt" text="Find a pet" />
           {isAuthenticated ? (
-            <NavbarItem onClick={logOut} to="#" text="logout"></NavbarItem>
+            <NavbarItem onClick={logOut} to="#" text="Logout"></NavbarItem>
           ) : (
             <>
-              <NavbarItem to="/register" text="sign up" />
-              <NavbarItem to="/login" text="sign in" />
+              <NavbarItem to="/register" text="Sign Up" />
+              <NavbarItem to="/login" text="Sign In" />
             </>
           )}
         </Account>

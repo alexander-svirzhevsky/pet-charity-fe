@@ -1,31 +1,34 @@
 import styled from "styled-components";
 
-import RegisterImg from "../../assets/images/register.png";
+import RegisterImg from "../../assets/images/cat3.jpg";
 
 const RegisterWrapper = styled.div`
   width: 100%;
-  height: 100%;
-  background: url(${RegisterImg}) center bottom / contain no-repeat;
+  height: 90vh;
+  background: url(${RegisterImg}) center center / cover no-repeat;
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
   background-color: #f7fbff;
+  color: #002169;
 `;
 
 const Btn = styled.button`
-  padding: 10px 45px;
-  background-color: #f2726f;
-  border: none;
+  background-color: #fff;
+  border: #00b8e0 0.125rem solid;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  padding: 1rem 3rem;
+  color: #002169;
+  border-radius: 2rem;
+  font-weight: 800;
   cursor: pointer;
-  color: #fff;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   &:hover {
-    background-color: #d86765;
+    background-color: #00b8e0;
+    color: #fff;
+    border: #00b8e0 0.125rem solid;
   }
 `;
 

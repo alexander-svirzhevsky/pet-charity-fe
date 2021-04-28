@@ -46,7 +46,6 @@ const Register = () => {
             remember: true,
           }}
           onFinish={onFinish}
-          onFinishFailed={console.log("error")}
         >
           <Form.Item
             label="Username"

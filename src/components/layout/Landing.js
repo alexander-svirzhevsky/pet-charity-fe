@@ -1,26 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Container } from "../shared/layout";
-import HeroImg from "../../assets/images/hero.png";
+import PetCharity from "../../assets/video/petCharity.mp4";
 
 const HeroWrapper = styled.div`
-  width: 100%;
+  position: absolute;
+  width: 100vw;
   height: 100%;
-  background: url(${HeroImg}) center center / cover no-repeat;
+  object-fit: contain;
+  z-index: -1;
 `;
 
-const WrapperLanding = styled.div`
-  padding: 80px 20px;
+const Video = styled.video`
+  position: absolute;
+  width: 100vw;
+  height: 720px;
+  object-fit: cover;
+  z-index: -1;
 `;
 
 const Landing = () => {
   return (
     <HeroWrapper>
-      {" "}
-      <Container>
-        <WrapperLanding>Landing</WrapperLanding>
-      </Container>{" "}
+      <Video autoPlay loop muted>
+        <source src={PetCharity} type="video/mp4" />
+      </Video>
     </HeroWrapper>
   );
 };

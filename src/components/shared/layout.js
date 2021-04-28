@@ -8,7 +8,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
 `;
 
@@ -17,6 +17,7 @@ const Title = styled.h1`
   font-size: 36px;
   line-height: 42px;
   margin-bottom: 40px;
+  color: #fff;
 `;
 
 export { Container, Wrapper, Title };

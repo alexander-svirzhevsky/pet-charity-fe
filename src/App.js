@@ -10,6 +10,8 @@ import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Animals from "./components/animals/Animals";
+import Admin from "./components/admin/Admin";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -29,6 +31,8 @@ const App = () => {
           <Switch>
             <Route path="/register" component={Register} exact />
             <Route path="/login" component={Login} exact />
+            <Route path="/adopt" component={Animals} exact />
+            <Route path="/admin" component={Admin} exact />
           </Switch>
         </>
       </BrowserRouter>
