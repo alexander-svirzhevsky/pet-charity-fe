@@ -12,6 +12,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Animals from "./components/animals/Animals";
 import Admin from "./components/admin/Admin";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -32,7 +33,7 @@ const App = () => {
             <Route path="/register" component={Register} exact />
             <Route path="/login" component={Login} exact />
             <Route path="/adopt" component={Animals} exact />
-            <Route path="/admin" component={Admin} exact />
+            <PrivateRoute path="/admin" component={Admin} exact />
           </Switch>
         </>
       </BrowserRouter>

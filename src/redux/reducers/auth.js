@@ -13,6 +13,7 @@ const initialState = {
   isAuthenticated: null,
   user: null,
   loading: true,
+  isAdmin: false,
 };
 
 export default function (state = initialState, action) {
@@ -25,6 +26,7 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         user: payload,
         loading: false,
+        isAdmin: payload.data.isAdmin,
       };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCCESS:
@@ -42,6 +44,7 @@ export default function (state = initialState, action) {
         ...state,
         isAuthenticated: false,
         token: null,
+        isAdmin: false,
       };
 
     default:

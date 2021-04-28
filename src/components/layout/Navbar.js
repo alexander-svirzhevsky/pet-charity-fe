@@ -27,12 +27,14 @@ const Navbar = () => {
   const logOut = () => dispatch(logout());
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
 
   return (
     <Header>
       <Container>
         <Account>
-          <NavbarItem to="/admin" text="Admin panel" />
+          {isAdmin && <NavbarItem to="/admin" text="Admin panel" />}
+          <NavbarItem to="/" text="Home" />
           <NavbarItem to="/adopt" text="Find a pet" />
           {isAuthenticated ? (
             <NavbarItem onClick={logOut} to="#" text="Logout"></NavbarItem>
