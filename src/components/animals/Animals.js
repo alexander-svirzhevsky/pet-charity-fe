@@ -1,47 +1,37 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
 
 import { getAnimals } from "../../redux/thunks/animal";
-import { Btn } from "../shared/auth";
+import { Btn } from "../shared/styles/layout";
 import { AnimalItem } from "./AnimalItem";
-import { Container } from "../shared/layout";
-
-const AnimalList = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-`;
+import { Container, List, Title } from "../shared/styles/layout";
+import Spinner from "../shared/Spinner";
 
 const Animals = () => {
   const dispatch = useDispatch();
 
-  const animals = useSelector((state) => state.animal.data);
-  const loading = useSelector((state) => state.animal.loading);
+  const { data, loading } = useSelector((state) => state.animal);
 
   const onClick = () => {
     dispatch(getAnimals());
   };
 
   return (
-    <Fragment>
-      <Container>
-        <h1>Animals</h1>
-        <Btn onClick={onClick}>Show all pets</Btn>
-        {loading ? (
-          <span></span>
-        ) : (
-          <Fragment>
-            <AnimalList>
-              {animals.map((animal) => (
-                <AnimalItem key={animal._id} animal={animal} />
-              ))}
-            </AnimalList>
-          </Fragment>
-        )}
-      </Container>
-    </Fragment>
+    <Container>
+      <Title color="#002169">Animals</Title>
+      <Btn onClick={onClick}>Show all pets</Btn>
+      {data === undefined ? (
+        <span>To find a pet, click on this button</span>
+      ) : loading ? (
+        <Spinner />
+      ) : (
+        <List>
+          {data.map((animal) => (
+            <AnimalItem key={animal._id} animal={animal} />
+          ))}
+        </List>
+      )}
+    </Container>
   );
 };
 

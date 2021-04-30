@@ -4,8 +4,9 @@ import { Redirect } from "react-router-dom";
 import { Form, Input, message } from "antd";
 
 import { register } from "../../redux/thunks/auth";
-import { Container, Title } from "../shared/layout";
-import { RegisterWrapper, Btn } from "../shared/auth";
+import { Container, Title } from "../shared/styles/layout";
+import { BackgroundFill, Btn } from "../shared/styles/layout";
+import RegisterImg from "../../assets/images/cat3.jpg";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const Register = () => {
   }
 
   return (
-    <RegisterWrapper>
+    <BackgroundFill image={RegisterImg}>
       <Container>
         <Title>Register</Title>
         <Form
@@ -119,7 +120,7 @@ const Register = () => {
           <Btn htmlType="submit">Register</Btn>
         </Form>
       </Container>
-    </RegisterWrapper>
+    </BackgroundFill>
   );
 };
 

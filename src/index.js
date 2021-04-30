@@ -1,16 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./assets/font/font.css";
-import App from "./App";
 
-import { Wrapper } from "./components/shared/layout";
-import "./index.css";
+import App from "./App";
+import "./assets/font/font.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Wrapper>
-      <App />
-    </Wrapper>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

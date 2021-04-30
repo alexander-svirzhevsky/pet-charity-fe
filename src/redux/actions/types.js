@@ -7,7 +7,3 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const GET_ANIMALS = "GET_ANIMALS";
 export const ANIMALS_ERROR = "ANIMALS_ERROR";
-export const ADD_TYPE = "ADD_TYPE";
-export const ADD_BREED = "ADD_BREED";
-export const ADD_ANIMAL = "ADD_ANIMAL";
-export const ADD_FAIL = "ADD_FAIL";

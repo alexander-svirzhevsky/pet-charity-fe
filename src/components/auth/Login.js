@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Input } from "antd";
 
 import { login } from "../../redux/thunks/auth";
-import { Container, Title } from "../shared/layout";
-import { RegisterWrapper, Btn } from "../shared/auth";
+import { Container, Title } from "../shared/styles/layout";
+import { BackgroundFill, Btn } from "../shared/styles/layout";
+import RegisterImg from "../../assets/images/cat3.jpg";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const Login = () => {
   }
 
   return (
-    <RegisterWrapper>
+    <BackgroundFill image={RegisterImg}>
       <Container>
         <Title>Log in</Title>
         <Form
@@ -80,7 +81,7 @@ const Login = () => {
           <Btn htmlType="submit">Log in</Btn>
         </Form>
       </Container>
-    </RegisterWrapper>
+    </BackgroundFill>
   );
 };
 

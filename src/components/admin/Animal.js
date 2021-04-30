@@ -1,40 +1,31 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Form, Input, message } from "antd";
-import styled from "styled-components";
 
-import { Btn } from "../shared/auth";
-import { addAnimal } from "../../redux/thunks/admin";
-
-const Section = styled.div`
-  padding-top: 50px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-`;
+import { Btn } from "../shared/styles/layout";
+import { addAnimal } from "../../services/animal";
+import { Section } from "../shared/styles/layout";
 
 const Type = () => {
-  const dispatch = useDispatch();
-
   const [formData, setFormData] = useState({
     name: "",
     sex: "",
     breedName: "",
     type: "",
   });
+
   const { name, sex, breedName, type } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onFinish = () => {
-    dispatch(addAnimal({ name, sex, breedName, type })).then((err) => {
-      if (err) {
-        message.error(err);
-      } else {
-        message.success("Animal saved!");
-      }
-    });
+  const onFinish = async () => {
+    try {
+      await addAnimal({ name, sex, breedName, type });
+
+      message.success("Animal saved!");
+    } catch (err) {
+      message.error(err.response.data.message);
+    }
   };
 
   return (

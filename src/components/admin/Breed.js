@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Form, Input, message } from "antd";
 
-import { Btn } from "../shared/auth";
-import { addBreed } from "../../redux/thunks/admin";
+import { Btn } from "../shared/styles/layout";
+import { addBreed } from "../../services/animal";
 
 const Breed = () => {
-  const dispatch = useDispatch();
-
   const [formData, setFormData] = useState({
     breedName: "",
     type: "",
@@ -17,14 +14,14 @@ const Breed = () => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onFinish = () => {
-    dispatch(addBreed({ breedName, type })).then((err) => {
-      if (err) {
-        message.error(err);
-      } else {
-        message.success("Breed saved!");
-      }
-    });
+  const onFinish = async () => {
+    try {
+      await addBreed({ breedName, type });
+
+      message.success("Breed saved!");
+    } catch (err) {
+      message.error(err.response.data.message);
+    }
   };
 
   return (

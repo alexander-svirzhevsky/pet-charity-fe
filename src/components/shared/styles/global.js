@@ -1,14 +1,18 @@
-html,
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+ html,
 body {
   height: 100%;
 }
 
 body {
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-family: "Roboto", "Arial", "Helvetica", sans-serif;
   line-height: 1.42;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  color: #002169;
 }
 
 .wrapper {
@@ -74,3 +78,6 @@ img {
 input {
   outline: none;
 }
+`;
+
+export { GlobalStyle };
