@@ -2,6 +2,7 @@ import { GET_ANIMALS, ANIMALS_ERROR } from "../actions/types";
 
 const initialState = {
 	loading: true,
+	animals: [],
 };
 
 export default function AnimalReducer(state = initialState, action) {
@@ -11,7 +12,7 @@ export default function AnimalReducer(state = initialState, action) {
 		case GET_ANIMALS:
 			return {
 				...state,
-				...payload,
+				animals: payload,
 				loading: false,
 			};
 		case ANIMALS_ERROR:

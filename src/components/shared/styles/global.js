@@ -1,5 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
+const colors = {
+	white: "#fff",
+};
+
 const GlobalStyle = createGlobalStyle`
  html,
 body {

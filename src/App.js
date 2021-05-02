@@ -6,11 +6,11 @@ import { loadUser } from "./redux/thunks/auth";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
-import Navbar from "./components/layout/Navbar";
-import Landing from "./components/layout/Landing";
+import Adopt from "./pages/adopt/Adopt";
+import Main from "./pages/main/Main";
+import Navbar from "./components/navbar/Navbar";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import Adopt from "./pages/adopt/Adopt";
 import AdminRoute from "./components/routing/AdminRoute";
 
 import { GlobalStyle } from "./components/shared/styles/global";
@@ -35,7 +35,7 @@ const App = () => {
 					<Navbar />
 					{/* Todo: Create a beautiful loader for it */}
 					<Suspense fallback={<div>Loading...</div>}>
-						<Route path="/" component={Landing} exact />
+						<Route path="/" component={Main} exact />
 						<Switch>
 							<Route path="/register" component={Register} exact />
 							<Route path="/login" component={Login} exact />

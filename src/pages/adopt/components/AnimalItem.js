@@ -11,6 +11,7 @@ import defaultImg from "../../../assets/images/default.jpg";
 
 export const AnimalItem = ({
 	animal: {
+		_id,
 		name,
 		sex,
 		type: { type },
@@ -26,7 +27,7 @@ export const AnimalItem = ({
 				{name} / {type} / {sex}
 			</Name>
 			<Breed>{breedName}</Breed>
-			<AdditionalInfo>learn more</AdditionalInfo>
+			<AdditionalInfo to={`/animals/${_id}`}>learn more</AdditionalInfo>
 		</Item>
 	);
 };
