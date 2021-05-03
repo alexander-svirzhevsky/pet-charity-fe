@@ -15,38 +15,38 @@ import AdminRoute from "./components/routing/AdminRoute";
 
 import { GlobalStyle } from "./components/shared/styles/global";
 import { Wrapper } from "./components/shared/styles/layout";
+import Spinner from "./components/shared/spinner/Spinner";
 
 const Admin = lazy(() => import("./pages/admin/Admin"));
 
 if (localStorage.token) {
-	setAuthToken(localStorage.token);
+  setAuthToken(localStorage.token);
 }
 
 const App = () => {
-	useEffect(() => {
-		store.dispatch(loadUser());
-	});
+  useEffect(() => {
+    store.dispatch(loadUser());
+  });
 
-	return (
-		<Provider store={store}>
-			<BrowserRouter>
-				<GlobalStyle />
-				<Wrapper>
-					<Navbar />
-					{/* Todo: Create a beautiful loader for it */}
-					<Suspense fallback={<div>Loading...</div>}>
-						<Route path="/" component={Main} exact />
-						<Switch>
-							<Route path="/register" component={Register} exact />
-							<Route path="/login" component={Login} exact />
-							<Route path="/adopt" component={Adopt} exact />
-							<AdminRoute path="/admin" component={Admin} exact />
-						</Switch>
-					</Suspense>
-				</Wrapper>
-			</BrowserRouter>
-		</Provider>
-	);
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <GlobalStyle />
+        <Wrapper>
+          <Navbar />
+          <Suspense fallback={<Spinner />}>
+            <Route path="/" component={Main} exact />
+            <Switch>
+              <Route path="/register" component={Register} exact />
+              <Route path="/login" component={Login} exact />
+              <Route path="/adopt" component={Adopt} exact />
+              <AdminRoute path="/admin" component={Admin} exact />
+            </Switch>
+          </Suspense>
+        </Wrapper>
+      </BrowserRouter>
+    </Provider>
+  );
 };
 
 export default App;

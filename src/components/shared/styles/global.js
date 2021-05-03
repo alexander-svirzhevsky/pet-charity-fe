@@ -1,7 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
 const colors = {
-	white: "#fff",
+  primary: "#002169",
+  secondary: "#00b8e0",
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -84,4 +85,4 @@ input {
 }
 `;
 
-export { GlobalStyle };
+export { GlobalStyle, colors };
