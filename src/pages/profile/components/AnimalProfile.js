@@ -25,6 +25,7 @@ const AnimalProfile = ({
     size,
     story,
     location,
+    phone,
   },
 }) => {
   return (
@@ -70,9 +71,7 @@ const AnimalProfile = ({
           My story
         </Heading>
         <p>{story}</p>
-        <a class="telephone-number" href="tel:623492-9045">
-          <SubTitle color={colors.primary}>Phone: 623-492-9045 </SubTitle>
-        </a>
+        <SubTitle color={colors.primary}>Phone: {phone} </SubTitle>
       </Col>
     </List>
   );
