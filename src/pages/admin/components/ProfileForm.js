@@ -2,27 +2,28 @@ import React, { useState } from "react";
 import { Form, Input, message } from "antd";
 
 import { Btn } from "../../../components/shared/styles/layout";
-import { addAnimal } from "../../../services/animal";
+import { addProfile } from "../../../services/animal";
 import { Section, FormArea } from "../../../components/shared/styles/layout";
 
-const AnimalForm = () => {
+const ProfileForm = () => {
   const [formData, setFormData] = useState({
     name: "",
-    sex: "",
-    breedName: "",
-    type: "",
+    age: "",
+    color: "",
+    size: "",
+    story: "",
   });
 
-  const { name, sex, breedName, type } = formData;
+  const { name, age, color, size, story } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onFinish = async () => {
     try {
-      await addAnimal({ name, sex, breedName, type });
+      await addProfile({ name, age, color, size, story });
 
-      message.success("Animal saved!");
+      message.success("Profile saved!");
     } catch (err) {
       message.error(err.response.data.message);
     }
@@ -56,8 +57,8 @@ const AnimalForm = () => {
             />
           </Form.Item>
           <Form.Item
-            label="Gender"
-            name="sex"
+            label="Age"
+            name="age"
             rules={[
               {
                 required: true,
@@ -66,15 +67,15 @@ const AnimalForm = () => {
           >
             <Input
               onChange={onChange}
-              value={sex}
-              type="text"
-              name="sex"
-              placeholder="Gender"
+              value={age}
+              type="number"
+              name="age"
+              placeholder="Age"
             />
           </Form.Item>
           <Form.Item
-            label="Breed Name"
-            name="breedName"
+            label="Color"
+            name="color"
             rules={[
               {
                 required: true,
@@ -83,15 +84,15 @@ const AnimalForm = () => {
           >
             <Input
               onChange={onChange}
-              value={breedName}
+              value={color}
               type="text"
-              name="breedName"
-              placeholder="Breed Name"
+              name="color"
+              placeholder="Color"
             />
           </Form.Item>
           <Form.Item
-            label="Animal Type"
-            name="type"
+            label="Size"
+            name="size"
             rules={[
               {
                 required: true,
@@ -100,17 +101,33 @@ const AnimalForm = () => {
           >
             <Input
               onChange={onChange}
-              value={type}
+              value={size}
               type="text"
-              name="type"
-              placeholder="Animal Type"
+              name="size"
+              placeholder="Size"
             />
           </Form.Item>
-          <Btn htmlType="submit">Add animal</Btn>
+          <Form.Item
+            label="Story"
+            name="story"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input.TextArea
+              onChange={onChange}
+              value={story}
+              name="story"
+              placeholder="Story"
+            />
+          </Form.Item>
+          <Btn htmlType="submit">Add profile</Btn>
         </Form>
       </FormArea>
     </Section>
   );
 };
 
-export default AnimalForm;
+export default ProfileForm;

@@ -11,7 +11,9 @@ import Main from "./pages/main/Main";
 import Navbar from "./components/navbar/Navbar";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Profile from "./pages/profile/Profile";
 import AdminRoute from "./components/routing/AdminRoute";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 import { GlobalStyle } from "./components/shared/styles/global";
 import { Wrapper } from "./components/shared/styles/layout";
@@ -40,6 +42,7 @@ const App = () => {
               <Route path="/register" component={Register} exact />
               <Route path="/login" component={Login} exact />
               <Route path="/adopt" component={Adopt} exact />
+              <PrivateRoute path="/profile/:id" component={Profile} exact />
               <AdminRoute path="/admin" component={Admin} exact />
             </Switch>
           </Suspense>

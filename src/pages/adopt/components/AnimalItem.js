@@ -27,7 +27,7 @@ export const AnimalItem = ({
         {name} / {type} / {sex}
       </Name>
       <Breed>{breedName}</Breed>
-      <AdditionalInfo to={`/animals/${_id}`}>learn more</AdditionalInfo>{" "}
+      <AdditionalInfo to={`/profile/${_id}`}>learn more</AdditionalInfo>{" "}
     </Item>
   );
 };
