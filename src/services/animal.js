@@ -22,13 +22,23 @@ export const addAnimal = async ({ name, sex, breedName, type }) => {
   return response;
 };
 
-export const addProfile = async ({ name, age, color, size, story }) => {
+export const addProfile = async ({
+  name,
+  age,
+  color,
+  size,
+  story,
+  phone,
+  location,
+}) => {
   const response = await axios.post("/api/profile", {
     name,
     age,
     color,
     size,
     story,
+    phone,
+    location,
   });
 
   return response;

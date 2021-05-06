@@ -7,6 +7,7 @@ import {
   SubTitle,
   Row,
   Heading,
+  AdditionalInfo,
 } from "../../../components/shared/styles/layout";
 import defaultImg from "../../../assets/images/default.jpg";
 import { colors } from "../../../components/shared/styles/global";
@@ -72,6 +73,7 @@ const AnimalProfile = ({
         </Heading>
         <p>{story}</p>
         <SubTitle color={colors.primary}>Phone: {phone} </SubTitle>
+        <AdditionalInfo linkTo="/profile">move back</AdditionalInfo>
       </Col>
     </List>
   );

@@ -39,6 +39,7 @@ export default function AnimalReducer(state = initialState, action) {
     case ANIMALS_ERROR:
       return {
         ...state,
+        loading: true,
         error: payload,
       };
     default:

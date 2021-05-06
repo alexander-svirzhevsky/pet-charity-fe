@@ -6,6 +6,7 @@ import { getAnimalById } from "../../redux/thunks/animal";
 import { Container } from "../../components/shared/styles/layout";
 import Spinner from "../../components/shared/spinner/Spinner";
 import AnimalProfile from "./components/AnimalProfile";
+import NotFound from "../../components/shared/notFound/NotFound";
 
 const Profile = ({ match }) => {
   const dispatch = useDispatch();
@@ -18,7 +19,9 @@ const Profile = ({ match }) => {
 
   return (
     <Container>
-      {profile === null || loading ? (
+      {loading ? (
+        <NotFound linkTo="/profile" text="this page does not exist" />
+      ) : profile === null ? (
         <Spinner />
       ) : (
         <AnimalProfile profile={profile} />

@@ -33,6 +33,7 @@ const Section = styled.div`
   justify-content: center;
   text-align: center;
   flex: ${(props) => props.flex || "0"};
+  flex-direction: ${(props) => props.flexDirection || "none"};
 `;
 
 const List = styled.div`
@@ -44,6 +45,7 @@ const List = styled.div`
 `;
 
 const Title = styled.h1`
+  text-align: ${(props) => props.textAlign || "none"};
   font-weight: 800;
   font-size: 36px;
   line-height: 40px;

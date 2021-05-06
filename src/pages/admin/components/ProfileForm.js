@@ -12,16 +12,18 @@ const ProfileForm = () => {
     color: "",
     size: "",
     story: "",
+    phone: "",
+    location: "",
   });
 
-  const { name, age, color, size, story } = formData;
+  const { name, age, color, size, story, phone, location } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onFinish = async () => {
     try {
-      await addProfile({ name, age, color, size, story });
+      await addProfile({ name, age, color, size, story, phone, location });
 
       message.success("Profile saved!");
     } catch (err) {
@@ -121,6 +123,40 @@ const ProfileForm = () => {
               value={story}
               name="story"
               placeholder="Story"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Phone"
+            name="phone"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={phone}
+              type="text"
+              name="phone"
+              placeholder="Phone"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Location"
+            name="location"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={location}
+              type="text"
+              name="location"
+              placeholder="Location"
             />
           </Form.Item>
           <Btn htmlType="submit">Add profile</Btn>
