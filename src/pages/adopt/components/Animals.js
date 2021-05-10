@@ -8,7 +8,7 @@ import {
   List,
   Title,
 } from "../../../components/shared/styles/layout";
-import NotFound from "../../../components/shared/notFound/NotFound";
+import InfoNotFound from "../../../components/shared/notFound/InfoNotFound";
 
 import Spinner from "../../../components/shared/spinner/Spinner";
 import { colors } from "../../../components/shared/styles/global";
@@ -30,7 +30,7 @@ const Animals = () => {
       {loading ? (
         <Spinner />
       ) : !loading && animals.length === 0 ? (
-        <NotFound to="/" text="no animals found"></NotFound>
+        <InfoNotFound to="/" text="no animals found"></InfoNotFound>
       ) : (
         <List>
           {animals.map((animal) => (

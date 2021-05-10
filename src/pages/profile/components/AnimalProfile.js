@@ -73,7 +73,7 @@ const AnimalProfile = ({
         </Heading>
         <p>{story}</p>
         <SubTitle color={colors.primary}>Phone: {phone} </SubTitle>
-        <AdditionalInfo linkTo="/profile">move back</AdditionalInfo>
+        <AdditionalInfo to="/profile">move back</AdditionalInfo>
       </Col>
     </List>
   );

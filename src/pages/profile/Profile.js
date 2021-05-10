@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { getAnimalById } from "../../redux/thunks/animal";
 import { Container } from "../../components/shared/styles/layout";
 import Spinner from "../../components/shared/spinner/Spinner";
 import AnimalProfile from "./components/AnimalProfile";
-import NotFound from "../../components/shared/notFound/NotFound";
+import InfoNotFound from "../../components/shared/notFound/InfoNotFound";
 
 const Profile = ({ match }) => {
   const dispatch = useDispatch();
@@ -15,12 +14,12 @@ const Profile = ({ match }) => {
 
   useEffect(() => {
     dispatch(getAnimalById(match.params.id));
-  }, [dispatch]);
+  }, [dispatch, match.params.id]);
 
   return (
     <Container>
       {loading ? (
-        <NotFound linkTo="/profile" text="this page does not exist" />
+        <InfoNotFound linkTo="/profile" text="there is no information about the profile of this pet" />
       ) : profile === null ? (
         <Spinner />
       ) : (

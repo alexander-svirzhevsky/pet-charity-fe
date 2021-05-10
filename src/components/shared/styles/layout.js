@@ -50,6 +50,7 @@ const Title = styled.h1`
   font-size: 36px;
   line-height: 40px;
   margin-bottom: ${(props) => props.marginBottom || "40px"};
+  margin-top: ${(props) => props.marginTop || "0"};
   color: #fff;
   color: ${(props) => props.color || "white"};
 `;
@@ -122,7 +123,7 @@ const AdditionalInfo = styled(Link)`
 const Row = styled.div`
   display: flex;
   justify-content: ${(props) => props.justify || "center"};
-  align-items: flex-start;
+  align-items: ${(props) => props. alignItems || "flex-start"};
   text-align: center;
   border-bottom: ${(props) => props.border || "none"};
   padding: ${(props) => props.padding || 0};

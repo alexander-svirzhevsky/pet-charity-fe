@@ -2,7 +2,6 @@ import {
   GET_ANIMALS,
   ANIMALS_ERROR,
   GET_ANIMAL,
-  UPDATE_ANIMAL,
   CLEAR_ANIMAL,
 } from "../actions/types";
 
@@ -17,7 +16,6 @@ export default function AnimalReducer(state = initialState, action) {
 
   switch (type) {
     case GET_ANIMAL:
-    case UPDATE_ANIMAL:
       return {
         ...state,
         profile: payload,

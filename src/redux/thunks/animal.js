@@ -3,7 +3,6 @@ import {
   GET_ANIMALS,
   ANIMALS_ERROR,
   GET_ANIMAL,
-  UPDATE_ANIMAL,
   CLEAR_ANIMAL,
 } from "../actions/types";
 
