@@ -8,6 +8,7 @@ import {
   List,
   Title,
 } from "../../../components/shared/styles/layout";
+import InfoNotFound from "../../../components/shared/notFound/InfoNotFound";
 
 import Spinner from "../../../components/shared/spinner/Spinner";
 import { colors } from "../../../components/shared/styles/global";
@@ -23,11 +24,13 @@ const Animals = () => {
 
   return (
     <Container>
-      <Title color={colors.primary}>Animals</Title>
+      <Title color={colors.primary} textAlign="center">
+        Animals
+      </Title>
       {loading ? (
         <Spinner />
       ) : !loading && animals.length === 0 ? (
-        <span>No animals found</span>
+        <InfoNotFound to="/" text="no animals found"></InfoNotFound>
       ) : (
         <List>
           {animals.map((animal) => (

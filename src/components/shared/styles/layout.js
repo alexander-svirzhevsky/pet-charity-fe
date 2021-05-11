@@ -10,7 +10,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  min-height: 650px;
+  min-height: 100vh;
   overflow: hidden;
 `;
 
@@ -23,11 +23,17 @@ const Header = styled.header`
   border-bottom: 2px solid #efefef;
 `;
 
+const FormArea = styled.header`
+  width: 100%;
+`;
+
 const Section = styled.div`
   padding: 50px 0;
   display: flex;
   justify-content: center;
   text-align: center;
+  flex: ${(props) => props.flex || "0"};
+  flex-direction: ${(props) => props.flexDirection || "none"};
 `;
 
 const List = styled.div`
@@ -35,15 +41,37 @@ const List = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: ${(props) => props.marginTop || "40px"};
 `;
 
 const Title = styled.h1`
+  text-align: ${(props) => props.textAlign || "none"};
   font-weight: 800;
   font-size: 36px;
   line-height: 40px;
-  margin-bottom: 40px;
+  margin-bottom: ${(props) => props.marginBottom || "40px"};
+  margin-top: ${(props) => props.marginTop || "0"};
   color: #fff;
   color: ${(props) => props.color || "white"};
+`;
+
+const Heading = styled.h2`
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 40px;
+  margin-bottom: ${(props) => props.marginBottom || "10px"};
+  color: #fff;
+  color: ${(props) => props.color || "white"};
+`;
+
+const SubTitle = styled.p`
+  display: block;
+  letter-spacing: 1px;
+  font-size: 17px;
+  margin-bottom: ${(props) => props.marginBottom || "5px"};
+  font-weight: 900;
+  color: ${(props) => props.color || "black"};
+  text-transform: lowercase;
 `;
 
 const BackgroundFill = styled.div`
@@ -95,10 +123,16 @@ const AdditionalInfo = styled(Link)`
 const Row = styled.div`
   display: flex;
   justify-content: ${(props) => props.justify || "center"};
-  align-items: center;
+  align-items: ${(props) => props.alignItems || "flex-start"};
   text-align: center;
   border-bottom: ${(props) => props.border || "none"};
   padding: ${(props) => props.padding || 0};
+  width: ${(props) => props.width || "100%"};
+  margin-bottom: ${(props) => props.marginBottom || "5px"};
+`;
+
+const Col = styled.div`
+  flex: 0 0 50%;
 `;
 
 export {
@@ -112,4 +146,8 @@ export {
   Header,
   BackgroundFill,
   Btn,
+  Col,
+  SubTitle,
+  Heading,
+  FormArea,
 };

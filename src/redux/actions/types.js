@@ -6,4 +6,7 @@ export const LOGIN_SUCCCESS = "LOGIN_SUCCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const GET_ANIMALS = "GET_ANIMALS";
+export const GET_ANIMAL = "GET_ANIMAL";
+export const CLEAR_ANIMAL = "CLEAR_ANIMAL";
+export const UPDATE_ANIMAL = "UPDATE_ANIMAL";
 export const ANIMALS_ERROR = "ANIMALS_ERROR";
