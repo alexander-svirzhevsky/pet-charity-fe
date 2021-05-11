@@ -123,7 +123,7 @@ const AdditionalInfo = styled(Link)`
 const Row = styled.div`
   display: flex;
   justify-content: ${(props) => props.justify || "center"};
-  align-items: ${(props) => props. alignItems || "flex-start"};
+  align-items: ${(props) => props.alignItems || "flex-start"};
   text-align: center;
   border-bottom: ${(props) => props.border || "none"};
   padding: ${(props) => props.padding || 0};
