@@ -1,21 +1,15 @@
 import React from "react";
-
-import AnimalTypeForm from "./components/AnimalTypeForm";
-import AnimalBreedForm from "./components/AnimalBreedForm";
-import AnimalForm from "./components/AnimalForm";
-import ProfileForm from "./components/ProfileForm";
 import { Container, Row } from "../../components/shared/styles/layout";
+import NavbarItem from "../../components/navbar/NavbarItem";
 
 const Admin = () => {
   return (
     <Container>
-      <Row justify="space-between" border="2px solid #efefef" padding="50px 0">
-        <AnimalTypeForm />
-        <AnimalBreedForm />
-      </Row>
-      <Row justify="space-between" padding="50px 0">
-        <AnimalForm />
-        <ProfileForm />
+      <Row fontSize="15px" fontWeight="700" flexDirection="column">
+        <NavbarItem to="/admin/breed_type" text="Add breed & type" />
+        <NavbarItem to="/admin/animal" text="Add animal" />
+        <NavbarItem to="/admin/profile_form" text="Create animal profile" />
+        <NavbarItem to="/animal" text="Delete animal" />
       </Row>
     </Container>
   );

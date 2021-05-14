@@ -10,3 +10,6 @@ export const GET_ANIMAL = "GET_ANIMAL";
 export const CLEAR_ANIMAL = "CLEAR_ANIMAL";
 export const UPDATE_ANIMAL = "UPDATE_ANIMAL";
 export const ANIMALS_ERROR = "ANIMALS_ERROR";
+export const ANIMAL_DELETED = "ANIMAL_DELETED";
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const SET_FILTER = "SET_FILTER";

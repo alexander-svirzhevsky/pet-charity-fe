@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Form, Input, message } from "antd";
 
-import { Btn } from "../../../components/shared/styles/layout";
+import { Btn, Container } from "../../../components/shared/styles/layout";
 import { addProfile } from "../../../services/animal";
-import { Section, FormArea } from "../../../components/shared/styles/layout";
+import { FormArea } from "../../../components/shared/styles/layout";
 
 const ProfileForm = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +32,7 @@ const ProfileForm = () => {
   };
 
   return (
-    <Section flex="0 0 45%">
+    <Container>
       <FormArea>
         <Form
           name="basic"
@@ -159,10 +159,10 @@ const ProfileForm = () => {
               placeholder="Location"
             />
           </Form.Item>
-          <Btn htmlType="submit">Add profile</Btn>
+          <Btn htmlType="submit">Create profile</Btn>
         </Form>
       </FormArea>
-    </Section>
+    </Container>
   );
 };
 

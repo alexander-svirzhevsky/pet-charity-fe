@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import AnimalCard from "./AnimalCard";
 import Pagination from "../../../components/shared/Pagination/Pagination";
 
 import { getAnimals } from "../../../redux/thunks/animal";
-import { AnimalItem } from "./AnimalItem";
 import {
   Container,
   List,
@@ -13,9 +14,8 @@ import InfoNotFound from "../../../components/shared/notFound/InfoNotFound";
 
 import Spinner from "../../../components/shared/spinner/Spinner";
 import { colors } from "../../../components/shared/styles/global";
-import Filter from "../../../components/shared/filter/Filter";
 
-const Animals = () => {
+const AnimalList = () => {
   const dispatch = useDispatch();
 
   const {
@@ -24,19 +24,16 @@ const Animals = () => {
     pageSize,
     totalAnimalsCount,
     currentPage,
-    filter: { type },
   } = useSelector((state) => state.animal);
 
   useEffect(() => {
-    dispatch(getAnimals(currentPage, pageSize, type));
+    dispatch(getAnimals(currentPage, pageSize));
   }, [dispatch]);
-
   return (
     <Container>
       <Title color={colors.primary} textAlign="center">
         Animals
       </Title>
-      <Filter></Filter>
       <Pagination
         totalAnimalsCount={totalAnimalsCount}
         pageSize={pageSize}
@@ -49,7 +46,7 @@ const Animals = () => {
       ) : (
         <List>
           {animals.map((animal) => (
-            <AnimalItem key={animal._id} animal={animal} />
+            <AnimalCard key={animal._id} animal={animal} />
           ))}
         </List>
       )}
@@ -57,4 +54,4 @@ const Animals = () => {
   );
 };
 
-export default Animals;
+export default AnimalList;

@@ -42,6 +42,7 @@ const List = styled.div`
   align-items: center;
   flex-wrap: wrap;
   margin-top: ${(props) => props.marginTop || "40px"};
+  margin-bottom: 10px;
 `;
 
 const Title = styled.h1`
@@ -89,17 +90,18 @@ const BackgroundFill = styled.div`
 
 const Btn = styled.button`
   background-color: #fff;
-  border: #00b8e0 2px solid;
-  font-size: 18px;
+  border: 2px solid;
+  border-color: ${(props) => props.borderColor || "#00b8e0"};
+  font-size: ${(props) => props.fontSize || "18px"};
   line-height: 30px;
-  padding: 15px 30px;
-  color: #002169;
+  padding: ${(props) => props.padding || "15px 30px"};
+  color: ${(props) => props.color || "#002169"};
   border-radius: 50px;
-  font-weight: 800;
+  font-weight: ${(props) => props.fontWeight || "800"};
   cursor: pointer;
   transition: all 0.3s ease;
   &:hover {
-    background-color: #00b8e0;
+    background-color: ${(props) => props.hoverColor || "#00b8e0"};
     color: #fff;
   }
 `;
@@ -129,6 +131,9 @@ const Row = styled.div`
   padding: ${(props) => props.padding || 0};
   width: ${(props) => props.width || "100%"};
   margin-bottom: ${(props) => props.marginBottom || "5px"};
+  flex-direction: ${(props) => props.flexDirection || "initial"};
+  font-size: ${(props) => props.fontSize || "inherit"};
+  font-weight: ${(props) => props.fontWeight || "inherit"};
 `;
 
 const Col = styled.div`

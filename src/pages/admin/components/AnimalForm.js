@@ -3,7 +3,7 @@ import { Form, Input, message } from "antd";
 
 import { Btn } from "../../../components/shared/styles/layout";
 import { addAnimal } from "../../../services/animal";
-import { Section, FormArea } from "../../../components/shared/styles/layout";
+import { Container, FormArea } from "../../../components/shared/styles/layout";
 
 const AnimalForm = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +29,7 @@ const AnimalForm = () => {
   };
 
   return (
-    <Section flex="0 0 45%">
+    <Container>
       <FormArea>
         <Form
           name="basic"
@@ -109,7 +109,7 @@ const AnimalForm = () => {
           <Btn htmlType="submit">Add animal</Btn>
         </Form>
       </FormArea>
-    </Section>
+    </Container>
   );
 };
 
