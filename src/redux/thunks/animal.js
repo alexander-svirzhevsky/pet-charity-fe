@@ -9,19 +9,20 @@ import {
   SET_FILTER,
 } from "../actions/types";
 
-export const getAnimals = (currentPage, pageSize, type) => async (dispatch) => {
+export const getAnimals = (currentPage, pageSize) => async (dispatch) => {
   dispatch({ type: CLEAR_ANIMAL });
 
   try {
     const res = await axios.get(
-      `/api/animal?page=${currentPage}&limit=${pageSize}&type=${type}`
+      `/api/animal?page=${currentPage}&limit=${pageSize}`
+      /*&type=${type}*/
     );
 
     dispatch({
       type: GET_ANIMALS,
       payload: {
         animals: res.data.data,
-        totalAnimalsCount: res.data.total,
+        totalAnimalsCount: res.data.data.count,
       },
     });
   } catch (err) {
@@ -29,13 +30,6 @@ export const getAnimals = (currentPage, pageSize, type) => async (dispatch) => {
       type: ANIMALS_ERROR,
     });
   }
-};
-
-export const setCurrentPage = (currentPage) => async (dispatch) => {
-  dispatch({
-    type: SET_CURRENT_PAGE,
-    payload: currentPage,
-  });
 };
 
 export const setFilter = (type) => async (dispatch) => {

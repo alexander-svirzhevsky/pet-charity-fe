@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import AnimalCard from "./AnimalCard";
-import Pagination from "../../../components/shared/Pagination/Pagination";
+import Paginations from "../../../components/shared/Pagination/Pagination";
 
 import { getAnimals } from "../../../redux/thunks/animal";
 import {
@@ -19,22 +19,30 @@ const AnimalList = () => {
   const dispatch = useDispatch();
 
   const {
-    animals,
+    animals: {
+      animals,
+      count
+    },
     loading,
     pageSize,
     totalAnimalsCount,
     currentPage,
-  } = useSelector((state) => state.animal);
+    filter: {
+      type
+    }
 
+  } = useSelector((state) => state.animal);
+  
   useEffect(() => {
-    dispatch(getAnimals(currentPage, pageSize));
+    dispatch(getAnimals(currentPage, pageSize, type));
   }, [dispatch]);
+
   return (
     <Container>
       <Title color={colors.primary} textAlign="center">
         Animals
       </Title>
-      <Pagination
+      <Paginations
         totalAnimalsCount={totalAnimalsCount}
         pageSize={pageSize}
         currentPage={currentPage}

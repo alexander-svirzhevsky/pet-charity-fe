@@ -4,7 +4,6 @@ import {
   GET_ANIMAL,
   CLEAR_ANIMAL,
   ANIMAL_DELETED,
-  SET_CURRENT_PAGE,
   SET_FILTER,
 } from "../actions/types";
 
@@ -12,9 +11,6 @@ const initialState = {
   loading: true,
   animals: [],
   profile: null,
-  pageSize: 5,
-  totalAnimalsCount: 0,
-  currentPage: 1,
   filter: {
     type: "",
   },
@@ -52,12 +48,6 @@ export default function AnimalReducer(state = initialState, action) {
       return {
         ...state,
         profile: null,
-        loading: false,
-      };
-    case SET_CURRENT_PAGE:
-      return {
-        ...state,
-        currentPage: payload,
         loading: true,
       };
     case ANIMALS_ERROR:

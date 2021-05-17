@@ -24,12 +24,13 @@ const Animals = () => {
     pageSize,
     totalAnimalsCount,
     currentPage,
-    filter: { type },
+    filter,
   } = useSelector((state) => state.animal);
 
   useEffect(() => {
-    dispatch(getAnimals(currentPage, pageSize, type));
+    dispatch(getAnimals(currentPage, pageSize));
   }, [dispatch]);
+
 
   return (
     <Container>
@@ -41,6 +42,7 @@ const Animals = () => {
         totalAnimalsCount={totalAnimalsCount}
         pageSize={pageSize}
         currentPage={currentPage}
+        count={animals}
       />
       {loading ? (
         <Spinner />
@@ -48,7 +50,7 @@ const Animals = () => {
         <InfoNotFound to="/" text="no animals found"></InfoNotFound>
       ) : (
         <List>
-          {animals.map((animal) => (
+          {animals.animals.map((animal) => (
             <AnimalItem key={animal._id} animal={animal} />
           ))}
         </List>
