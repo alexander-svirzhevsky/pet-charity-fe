@@ -8,6 +8,7 @@ import {
 	SET_CURRENT_PAGE,
 	SET_FILTER,
 	ANIMAL_LOADING,
+	CLEAR_PROFILE,
 } from "../actions/types";
 
 export const getAnimals =
@@ -40,6 +41,13 @@ export const setFilter = (type) => async (dispatch) => {
 };
 
 export const getAnimalById = (animalId) => async (dispatch) => {
+	dispatch({
+		type: CLEAR_PROFILE,
+	});
+	dispatch({
+		type: ANIMAL_LOADING,
+	});
+
 	try {
 		const res = await axios.get(`/api/profile/${animalId}`);
 

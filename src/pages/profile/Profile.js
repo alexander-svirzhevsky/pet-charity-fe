@@ -8,25 +8,28 @@ import AnimalProfile from "./components/AnimalProfile";
 import InfoNotFound from "../../components/shared/notFound/InfoNotFound";
 
 const Profile = ({ match }) => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const { loading, profile } = useSelector((state) => state.animal);
+	const { loading, profile } = useSelector((state) => state.animal);
 
-  useEffect(() => {
-    dispatch(getAnimalById(match.params.id));
-  }, [dispatch, match.params.id]);
+	useEffect(() => {
+		dispatch(getAnimalById(match.params.id));
+	}, [dispatch, match.params.id]);
 
-  return (
-    <Container>
-      {loading ? (
-        <InfoNotFound linkTo="/profile" text="there is no information about the profile of this pet" />
-      ) : profile === null ? (
-        <Spinner />
-      ) : (
-        <AnimalProfile profile={profile} />
-      )}
-    </Container>
-  );
+	return (
+		<Container>
+			{loading ? (
+				<Spinner />
+			) : profile === null ? (
+				<InfoNotFound
+					linkTo="/profile"
+					text="there is no information about the profile of this pet"
+				/>
+			) : (
+				<AnimalProfile profile={profile} />
+			)}
+		</Container>
+	);
 };
 
 export default Profile;

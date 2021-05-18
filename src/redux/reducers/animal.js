@@ -2,7 +2,7 @@ import {
 	GET_ANIMALS,
 	ANIMALS_ERROR,
 	GET_ANIMAL,
-	CLEAR_ANIMAL,
+	CLEAR_PROFILE,
 	ANIMAL_LOADING,
 	ANIMAL_DELETED,
 	SET_FILTER,
@@ -55,6 +55,11 @@ export default function AnimalReducer(state = initialState, action) {
 				...state,
 				loading: false,
 				animals: [],
+			};
+		case CLEAR_PROFILE:
+			return {
+				...state,
+				profile: null,
 			};
 		default:
 			return state;
