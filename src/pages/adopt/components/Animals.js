@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Pagination from "../../../components/shared/Pagination/Pagination";
 
-import { getAnimals } from "../../../redux/thunks/animal";
+import PaginationList from "../../../components/shared/Pagination/Pagination";
+import { getAnimals, setFilter } from "../../../redux/thunks/animal";
 import { AnimalItem } from "./AnimalItem";
 import {
   Container,
@@ -18,31 +18,31 @@ import Filter from "../../../components/shared/filter/Filter";
 const Animals = () => {
   const dispatch = useDispatch();
 
-  const {
-    animals,
-    loading,
-    pageSize,
-    totalAnimalsCount,
-    currentPage,
-    filter,
-  } = useSelector((state) => state.animal);
+  const { animals, loading } = useSelector((state) => state.animal);
+
+  const pageSize = 10;
+  const currentPage = 1;
+
+  const onPageChange = (pageNumber) => {
+    dispatch(getAnimals(pageNumber, pageSize, "", ""));
+  };
 
   useEffect(() => {
-    dispatch(getAnimals(currentPage, pageSize));
+    dispatch(getAnimals(currentPage, pageSize, "", ""));
   }, [dispatch]);
-
 
   return (
     <Container>
       <Title color={colors.primary} textAlign="center">
         Animals
       </Title>
-      <Filter></Filter>
-      <Pagination
-        totalAnimalsCount={totalAnimalsCount}
+      <Filter currentPage={currentPage} pageSize={pageSize}></Filter>
+      <PaginationList
         pageSize={pageSize}
         currentPage={currentPage}
-        count={animals}
+        count={animals.count}
+        pageSize={pageSize}
+        onPageChange={onPageChange}
       />
       {loading ? (
         <Spinner />

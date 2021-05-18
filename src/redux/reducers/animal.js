@@ -41,7 +41,6 @@ export default function AnimalReducer(state = initialState, action) {
       return {
         ...state,
         animals: payload.animals,
-        totalAnimalsCount: payload.totalAnimalsCount,
         loading: false,
       };
     case CLEAR_ANIMAL:

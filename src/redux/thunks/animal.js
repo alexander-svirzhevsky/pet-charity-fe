@@ -9,12 +9,14 @@ import {
   SET_FILTER,
 } from "../actions/types";
 
-export const getAnimals = (currentPage, pageSize) => async (dispatch) => {
+export const getAnimals = (currentPage, pageSize, type, sex) => async (
+  dispatch
+) => {
   dispatch({ type: CLEAR_ANIMAL });
 
   try {
     const res = await axios.get(
-      `/api/animal?page=${currentPage}&limit=${pageSize}`
+      `/api/animal?page=${currentPage}&limit=${pageSize}&type=${type}&sex=${sex}`
       /*&type=${type}*/
     );
 
@@ -22,7 +24,6 @@ export const getAnimals = (currentPage, pageSize) => async (dispatch) => {
       type: GET_ANIMALS,
       payload: {
         animals: res.data.data,
-        totalAnimalsCount: res.data.data.count,
       },
     });
   } catch (err) {
