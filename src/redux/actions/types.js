@@ -12,3 +12,4 @@ export const UPDATE_ANIMAL = "UPDATE_ANIMAL";
 export const ANIMALS_ERROR = "ANIMALS_ERROR";
 export const ANIMAL_DELETED = "ANIMAL_DELETED";
 export const SET_FILTER = "SET_FILTER";
+export const ANIMAL_LOADING = "ANIMAL_LOADING";
