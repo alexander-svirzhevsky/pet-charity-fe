@@ -1,6 +1,6 @@
 import { Formik, Form, Field } from "formik";
 
-const Filter = ({ onFiltersSubmit }) => {
+const Filter = ({ onFiltersSubmit, initialValues }) => {
 	const validate = () => {
 		const errors = {};
 		return errors;
@@ -12,7 +12,7 @@ const Filter = ({ onFiltersSubmit }) => {
 
 	return (
 		<Formik
-			initialValues={{ type: "", sex: "" }}
+			initialValues={initialValues}
 			validate={validate}
 			onSubmit={onSubmit}
 		>

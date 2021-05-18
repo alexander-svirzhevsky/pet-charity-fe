@@ -2,21 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Pagination } from "antd";
 
-import { getAnimals, setFilter } from "../../../redux/thunks/animal";
+import { getAnimals } from "../../../redux/thunks/animal";
 import { AnimalItem } from "./AnimalItem";
 import {
 	Container,
 	List,
 	Title,
 } from "../../../components/shared/styles/layout";
-import InfoNotFound from "../../../components/shared/notFound/InfoNotFound";
 
 import Spinner from "../../../components/shared/spinner/Spinner";
 import { colors } from "../../../components/shared/styles/global";
 import Filter from "../../../components/shared/filter/Filter";
 
 const Animals = () => {
-	const [currentPage, setCurrentPage] = useState(1);
 	const [filterCriteria, setFilterCriteria] = useState({
 		currentPage: 1,
 		pageSize: 10,
@@ -26,24 +24,31 @@ const Animals = () => {
 
 	const dispatch = useDispatch();
 
+	const { currentPage, pageSize, sex, type } = filterCriteria;
 	const { animals, loading } = useSelector((state) => state.animal);
 
-	const pageSize = 10;
-
 	const onPageChange = (page) => {
-		setCurrentPage(page);
-		dispatch(getAnimals(page, pageSize, "", ""));
+		setFilterCriteria({ ...filterCriteria, currentPage: page });
+		// dispatch(getAnimals(page, pageSize, type, sex));
 	};
 
-	const onFiltersSubmit = ({ type, sex }) => {
-		dispatch(getAnimals(currentPage, pageSize, type, sex));
+	const onFiltersSubmit = (props) => {
+		setFilterCriteria({ ...filterCriteria, type: props.type, sex: props.sex });
+		// dispatch(getAnimals(currentPage, pageSize, props.type, props.sex));
 	};
+
+	const onClear = () =>
+		setFilterCriteria({
+			currentPage: 1,
+			pageSize: 10,
+			sex: "",
+			type: "",
+		});
 
 	useEffect(() => {
-		dispatch(getAnimals(currentPage, pageSize, "", ""));
-	}, [dispatch]);
-	console.log(animals);
-	console.log(loading);
+		dispatch(getAnimals(currentPage, pageSize, type, sex));
+	}, [dispatch, filterCriteria]);
+
 	return (
 		<Container>
 			<Title color={colors.primary} textAlign="center">
@@ -57,6 +62,7 @@ const Animals = () => {
 						currentPage={currentPage}
 						pageSize={pageSize}
 						onFiltersSubmit={onFiltersSubmit}
+						initialValues={{ type, sex }}
 					/>
 					<List>
 						<Pagination
