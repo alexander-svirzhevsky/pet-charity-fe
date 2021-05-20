@@ -55,35 +55,39 @@ const Animals = () => {
     const { search } = history.location;
     const parsed = queryString.parse(search.substr(1));
 
+    let filter = {};
+
+    if( parsed.page ) filter.currentPage = Number(parsed.page);
+    if( parsed.type ) filter.type = parsed.type;
+    if( parsed.sex ) filter.sex = parsed.sex;
+
+    console.log(filter);
+
     setFilterCriteria({
       ...filterCriteria,
-      currentPage: Number(parsed.page),
-      type: parsed.type,
-      sex: parsed.sex,
+      ...filter
     });
   }, []);
 
   useEffect(() => {
-    // const query = {};
+    const query = {};
 
-    // if (filterCriteria.currentPage > 1) {
-    //   query.page = String(filterCriteria.currentPage);
-    // }
+    if (filterCriteria.currentPage !== 1) {
+      query.page = String(filterCriteria.currentPage);
+    }
 
-    // if (filterCriteria.type) {
-    //   query.type = String(filterCriteria.type);
-    // }
+    if (filterCriteria.type) {
+      query.type = String(filterCriteria.type);
+    }
 
-    // if (filterCriteria.sex) {
-    //   query.sex = String(filterCriteria.sex);
-    // }
-
-    // console.log(queryString.stringify(query));
+    if (filterCriteria.sex) {
+      query.sex = String(filterCriteria.sex);
+    }
 
     history.push({
       pathname: "/profile",
-      search: `?page=${currentPage}&type=${type}&sex=${sex}`,
-      // search: queryString.stringify(query),
+      // search: `?page=${currentPage}&type=${type}&sex=${sex}`,
+      search: queryString.stringify(query),
     });
 
     dispatch(getAnimals(currentPage, pageSize, type, sex));

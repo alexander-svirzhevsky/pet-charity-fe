@@ -12,9 +12,6 @@ const initialState = {
 	loading: true,
 	animals: [],
 	profile: null,
-	filter: {
-		type: "",
-	},
 };
 
 export default function AnimalReducer(state = initialState, action) {
@@ -41,7 +38,7 @@ export default function AnimalReducer(state = initialState, action) {
 		case ANIMAL_DELETED:
 			return {
 				...state,
-				animals: state.animals.filter((animal) => animal._id !== payload),
+				animals: state.animals.animals.filter((animal) => animal._id !== payload),
 				loading: false,
 			};
 		case GET_ANIMALS:

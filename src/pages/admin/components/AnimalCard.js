@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteAnimal } from "../../../redux/thunks/animal";
+import { deleteAnimal, getAnimals } from "../../../redux/thunks/animal";
 import {
   Item,
   Name,
@@ -16,11 +16,13 @@ const AnimalCard = ({
     type: { type },
     breedName: { breedName },
   },
+  filterCriteria,
 }) => {
   const dispatch = useDispatch();
 
   const onFinish = (id) => {
     dispatch(deleteAnimal(id));
+    dispatch(getAnimals(filterCriteria.currentPage, filterCriteria.pageSize, filterCriteria.type, filterCriteria.sex));
   };
 
   return (
