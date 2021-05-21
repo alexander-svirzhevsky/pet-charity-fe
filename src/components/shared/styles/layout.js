@@ -46,10 +46,11 @@ const List = styled.div`
 `;
 
 const Title = styled.h1`
+  position: relative;
   text-align: ${(props) => props.textAlign || "none"};
   font-weight: 800;
-  font-size: 36px;
-  line-height: 40px;
+  font-size: ${(props) => props.fontSize || "36px"};
+  line-height:${(props) => props.lineHeight || "40px"};
   margin-bottom: ${(props) => props.marginBottom || "40px"};
   margin-top: ${(props) => props.marginTop || "0"};
   color: #fff;
@@ -66,6 +67,7 @@ const Heading = styled.h2`
 `;
 
 const SubTitle = styled.p`
+  position: relative;
   display: block;
   letter-spacing: 1px;
   font-size: 17px;
@@ -89,6 +91,7 @@ const BackgroundFill = styled.div`
 `;
 
 const Btn = styled.button`
+  position: relative;
   background-color: #fff;
   border: 2px solid;
   border-color: ${(props) => props.borderColor || "#00b8e0"};

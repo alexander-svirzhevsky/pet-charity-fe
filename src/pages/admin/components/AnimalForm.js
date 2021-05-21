@@ -30,7 +30,6 @@ const AnimalForm = () => {
 
   return (
     <Container>
-      <FormArea>
         <Form
           name="basic"
           initialValues={{
@@ -108,7 +107,6 @@ const AnimalForm = () => {
           </Form.Item>
           <Btn htmlType="submit">Add animal</Btn>
         </Form>
-      </FormArea>
     </Container>
   );
 };

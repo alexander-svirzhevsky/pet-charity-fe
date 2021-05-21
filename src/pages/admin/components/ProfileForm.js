@@ -33,7 +33,6 @@ const ProfileForm = () => {
 
   return (
     <Container>
-      <FormArea>
         <Form
           name="basic"
           initialValues={{
@@ -161,7 +160,6 @@ const ProfileForm = () => {
           </Form.Item>
           <Btn htmlType="submit">Create profile</Btn>
         </Form>
-      </FormArea>
     </Container>
   );
 };

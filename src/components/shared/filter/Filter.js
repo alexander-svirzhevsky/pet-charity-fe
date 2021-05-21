@@ -1,12 +1,19 @@
 import { Formik, Form, Field } from "formik";
+import { Select } from 'antd';
+const { Option } = Select;
 
 const Filter = ({ onFiltersSubmit, initialValues }) => {
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+  }
+
   const validate = () => {
     const errors = {};
     return errors;
   };
 
   const onSubmit = (values) => {
+    console.log(values);
     onFiltersSubmit(values);
   };
 
@@ -19,6 +26,14 @@ const Filter = ({ onFiltersSubmit, initialValues }) => {
     >
       {({ isSubmitting }) => (
         <Form>
+          {/* <Field name="type" as="select">
+            <Select name="type" defaultValue="all" style={{ width: 120 }} onChange={handleChange}>
+              <Option value="">all</Option>
+              <Option value="cat">cat</Option>
+              <Option value="dog">dog</Option>
+              <Option value="bird">bird</Option>
+            </Select>
+           </Field> */}
           <Field name="type" as="select">
             <option value="">all</option>
             <option value="cat">cat</option>
