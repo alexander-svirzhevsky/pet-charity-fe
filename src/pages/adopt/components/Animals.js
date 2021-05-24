@@ -33,13 +33,13 @@ const Animals = () => {
 
   const onPageChange = (page) => {
     setFilterCriteria({ ...filterCriteria, currentPage: page });
-    // dispatch(getAnimals(page, pageSize, type, sex));
+    dispatch(getAnimals(page, pageSize, type, sex));
   };
 
-  const onFiltersSubmit = (props) => {
-    setFilterCriteria({ ...filterCriteria, type: props.type, sex: props.sex });
-    // dispatch(getAnimals(1, pageSize, props.type, props.sex));
-  };
+  // const onFiltersSubmit = (props) => {
+  // setFilterCriteria({ ...filterCriteria, type: props.type, sex: props.sex });
+  // dispatch(getAnimals(1, pageSize, props.type, props.sex));
+  // };
 
   const onClear = () => {
     setFilterCriteria({
@@ -48,7 +48,6 @@ const Animals = () => {
       sex: "",
       type: "",
     });
-    // dispatch(getAnimals(currentPage, pageSize, type, sex));
   };
 
   useEffect(() => {
@@ -57,15 +56,13 @@ const Animals = () => {
 
     let filter = {};
 
-    if( parsed.page ) filter.currentPage = Number(parsed.page);
-    if( parsed.type ) filter.type = parsed.type;
-    if( parsed.sex ) filter.sex = parsed.sex;
-
-    console.log(filter);
+    if (parsed.page) filter.currentPage = Number(parsed.page);
+    if (parsed.type) filter.type = parsed.type;
+    if (parsed.sex) filter.sex = parsed.sex;
 
     setFilterCriteria({
       ...filterCriteria,
-      ...filter
+      ...filter,
     });
   }, []);
 
@@ -105,8 +102,9 @@ const Animals = () => {
           <Filter
             currentPage={currentPage}
             pageSize={pageSize}
-            onFiltersSubmit={onFiltersSubmit}
             initialValues={{ type, sex }}
+            setFilterCriteria={setFilterCriteria}
+            filterCriteria={filterCriteria}
           />
           <Btn onClick={onClear}>clear the filter</Btn>
           <List>

@@ -15,12 +15,13 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.header`
-  color: #002169;
+  /* color: #002169; */
   font-size: 17px;
   font-weight: 800;
   line-height: 30px;
   width: 100%;
-  border-bottom: 2px solid #efefef;
+  border-bottom: 2px solid;
+  border-color: ${({ theme }) => theme.borderColor};
 `;
 
 const FormArea = styled.header`
@@ -50,11 +51,11 @@ const Title = styled.h1`
   text-align: ${(props) => props.textAlign || "none"};
   font-weight: 800;
   font-size: ${(props) => props.fontSize || "36px"};
-  line-height:${(props) => props.lineHeight || "40px"};
+  line-height: ${(props) => props.lineHeight || "40px"};
   margin-bottom: ${(props) => props.marginBottom || "40px"};
   margin-top: ${(props) => props.marginTop || "0"};
-  color: #fff;
-  color: ${(props) => props.color || "white"};
+  /* color: ${(props) => props.color || "white"}; */
+  color: ${({ theme }) => theme.white}; ;
 `;
 
 const Heading = styled.h2`
@@ -62,7 +63,6 @@ const Heading = styled.h2`
   font-size: 34px;
   line-height: 40px;
   margin-bottom: ${(props) => props.marginBottom || "10px"};
-  color: #fff;
   color: ${(props) => props.color || "white"};
 `;
 
@@ -105,6 +105,7 @@ const Btn = styled.button`
   transition: all 0.3s ease;
   &:hover {
     background-color: ${(props) => props.hoverColor || "#00b8e0"};
+    /* background-color: ${({ theme }) => theme.text}; */
     color: #fff;
   }
 `;

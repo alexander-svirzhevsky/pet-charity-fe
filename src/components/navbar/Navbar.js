@@ -1,21 +1,21 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { LogoutOutlined } from '@ant-design/icons';
+import { LogoutOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
 import { logout } from "../../redux/thunks/auth";
 import { Container, Header, Row } from "../shared/styles/layout";
-import { colors } from "../../components/shared/styles/global"
+import { colors } from "../../components/shared/styles/global";
 import NavbarItem from "./NavbarItem";
 
 const User = styled.div`
   padding: 20px 15px;
-`
+`;
 const UserName = styled.div`
   display: inline-block;
   margin-right: 10px;
   color: #00b8e0;
-`
+`;
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -33,8 +33,11 @@ const Navbar = () => {
           <NavbarItem to="/profile" text="Find a pet" />
           {isAuthenticated ? (
             <User>
-              {user && <UserName>{user.data.name}</UserName> }
-              <LogoutOutlined onClick={logOut} style={{color: colors.secondary}}/>
+              {user && <UserName>{user.data.name}</UserName>}
+              <LogoutOutlined
+                onClick={logOut}
+                style={{ color: colors.secondary }}
+              />
             </User>
           ) : (
             <>

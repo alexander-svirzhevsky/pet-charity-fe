@@ -11,9 +11,8 @@ import {
   List,
   Title,
   Btn,
-  SubTitle
+  SubTitle,
 } from "../../../components/shared/styles/layout";
-import InfoNotFound from "../../../components/shared/notFound/InfoNotFound";
 
 import Spinner from "../../../components/shared/spinner/Spinner";
 import { colors } from "../../../components/shared/styles/global";
@@ -31,16 +30,16 @@ const AnimalList = () => {
 
   const { currentPage, pageSize, sex, type } = filterCriteria;
   const { animals, loading } = useSelector((state) => state.animal);
-  
+
   const onPageChange = (page) => {
     setFilterCriteria({ ...filterCriteria, currentPage: page });
     // dispatch(getAnimals(page, pageSize, type, sex));
   };
 
-  const onFiltersSubmit = (props) => {
-    setFilterCriteria({ ...filterCriteria, type: props.type, sex: props.sex });
-    // dispatch(getAnimals(1, pageSize, props.type, props.sex));
-  };
+  // const onFiltersSubmit = (props) => {
+  //   setFilterCriteria({ ...filterCriteria, type: props.type, sex: props.sex });
+  // dispatch(getAnimals(1, pageSize, props.type, props.sex));
+  // };
 
   const onClear = () => {
     setFilterCriteria({
@@ -49,7 +48,6 @@ const AnimalList = () => {
       sex: "",
       type: "",
     });
-    // dispatch(getAnimals(currentPage, pageSize, type, sex));
   };
 
   useEffect(() => {
@@ -58,13 +56,13 @@ const AnimalList = () => {
 
     let filter = {};
 
-    if( parsed.page ) filter.currentPage = Number(parsed.page);
-    if( parsed.type ) filter.type = parsed.type;
-    if( parsed.sex ) filter.sex = parsed.sex;
+    if (parsed.page) filter.currentPage = Number(parsed.page);
+    if (parsed.type) filter.type = parsed.type;
+    if (parsed.sex) filter.sex = parsed.sex;
 
     setFilterCriteria({
       ...filterCriteria,
-      ...filter
+      ...filter,
     });
   }, []);
 
@@ -84,14 +82,13 @@ const AnimalList = () => {
     }
 
     history.push({
-      pathname: "/animal",
+      pathname: "/admin/delete",
       // search: `?page=${currentPage}&type=${type}&sex=${sex}`,
       search: queryString.stringify(query),
     });
 
     dispatch(getAnimals(currentPage, pageSize, type, sex));
   }, [dispatch, filterCriteria]);
-
 
   return (
     <Container>
@@ -100,14 +97,14 @@ const AnimalList = () => {
       </Title>
       {loading ? (
         <Spinner />
-      ) :
-      (
+      ) : (
         <>
           <Filter
             currentPage={currentPage}
             pageSize={pageSize}
-            onFiltersSubmit={onFiltersSubmit}
             initialValues={{ type, sex }}
+            setFilterCriteria={setFilterCriteria}
+            filterCriteria={filterCriteria}
           />
           <Btn onClick={onClear}>clear the filter</Btn>
           <List>
@@ -120,10 +117,19 @@ const AnimalList = () => {
             />
           </List>
           <List>
-            
-            { animals.length !== 0 ? (animals.animals.map((animal) => (
-              <AnimalCard key={animal._id} animal={animal} filterCriteria={filterCriteria}/>
-            ))) : <SubTitle color={colors.primary}>Animals not found. Please, Try to refine your criteria</SubTitle>}
+            {animals.length !== 0 && animals.animals ? (
+              animals.animals.map((animal) => (
+                <AnimalCard
+                  key={animal._id}
+                  animal={animal}
+                  filterCriteria={filterCriteria}
+                />
+              ))
+            ) : (
+              <SubTitle color={colors.primary}>
+                Animals not found. Please, Try to refine your criteria
+              </SubTitle>
+            )}
           </List>
         </>
       )}
