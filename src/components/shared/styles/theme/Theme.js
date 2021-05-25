@@ -6,6 +6,7 @@ export const lightTheme = {
   white: "#fff",
   hover: "#00b8e0",
   borderColor: "#efefef",
+  secondary: "#00b8e0",
 };
 export const darkTheme = {
   body: "#363537",
@@ -14,4 +15,8 @@ export const darkTheme = {
   background: "#0d1117",
   hover: "rgb(4%, 5%, 6%, .5)",
   borderColor: "#efefef",
+  secondary: "#00b8e0",
 };
+
+// primary: "#002169",
+// secondary: "#00b8e0",

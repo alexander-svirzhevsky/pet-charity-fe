@@ -114,7 +114,7 @@ const AdditionalInfo = styled(Link)`
   display: block;
   font-weight: 600;
   margin: auto;
-  color: #002169;
+  color: ${({ theme }) => theme.text};
   font-size: 15px;
   line-height: 20px;
   padding: 5px 10px;

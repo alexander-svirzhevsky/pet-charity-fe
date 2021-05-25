@@ -23,13 +23,13 @@ const Name = styled.span`
   margin: auto;
   font-weight: 700;
   font-size: 20px;
-  color: #002169;
+  color: ${({ theme }) => theme.text};
 `;
 
 const Breed = styled.span`
   display: block;
   margin: auto;
-  color: #00a2c7;
+  color: ${({ theme }) => theme.secondary};
   font-weight: 700;
   margin-bottom: ${(props) => props.marginBottom || "0"};
 `;

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LogoutOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
+import Toggle from "../../components/shared/theme/Toggler";
 import { logout } from "../../redux/thunks/auth";
 import { Container, Header, Row } from "../shared/styles/layout";
 import { colors } from "../../components/shared/styles/global";
@@ -17,7 +18,7 @@ const UserName = styled.div`
   color: #00b8e0;
 `;
 
-const Navbar = () => {
+const Navbar = ({ theme, themeToggler }) => {
   const dispatch = useDispatch();
 
   const logOut = () => dispatch(logout());
@@ -27,7 +28,7 @@ const Navbar = () => {
   return (
     <Header>
       <Container>
-        <Row justify="flex-end">
+        <Row justify="flex-end" alignItems="center">
           {isAdmin && <NavbarItem to="/admin" text="Admin panel" />}
           <NavbarItem to="/" text="Home" />
           <NavbarItem to="/profile" text="Find a pet" />
@@ -45,6 +46,7 @@ const Navbar = () => {
               <NavbarItem to="/login" text="Sign In" />
             </>
           )}
+          <Toggle theme={theme} toggleTheme={themeToggler} />
         </Row>
       </Container>
     </Header>

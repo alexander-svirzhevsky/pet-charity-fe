@@ -1,6 +1,6 @@
 import React, { useEffect, Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "antd/dist/antd.css";
+import "./style/custom-antd.css";
 import setAuthToken from "./redux/helper/setAuthToken";
 import { loadUser } from "./redux/thunks/auth";
 import { Provider } from "react-redux";
@@ -16,7 +16,7 @@ import { lightTheme, darkTheme } from "./components/shared/styles/theme/Theme";
 import { useDarkMode } from "./components/shared/theme/useDarkMode";
 import Toggle from "./components/shared/theme/Toggler";
 
-import { Wrapper } from "./components/shared/styles/layout";
+import { Container, Wrapper } from "./components/shared/styles/layout";
 import Spinner from "./components/shared/spinner/Spinner";
 
 import ErrorBoundary from "./components/shared/ErrorBoundary/ErrorBoundary";
@@ -35,6 +35,7 @@ const App = () => {
   const themeMode = theme === "light" ? lightTheme : darkTheme;
 
   if (!mountedComponent) return <div />;
+
   return (
     <ThemeProvider theme={themeMode}>
       <Provider store={store}>
@@ -42,8 +43,8 @@ const App = () => {
           <GlobalStyle />
           <Wrapper>
             <ErrorBoundary>
-              <Navbar />
-              <Toggle theme={theme} toggleTheme={themeToggler} />
+              <Navbar theme={theme} themeToggler={themeToggler} />
+              <Container></Container>
               <Suspense fallback={<Spinner />}>
                 <Switch>
                   <Route path="/" component={Main} exact />
