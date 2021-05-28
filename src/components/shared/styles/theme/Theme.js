@@ -17,6 +17,3 @@ export const darkTheme = {
   borderColor: "#efefef",
   secondary: "#00b8e0",
 };
-
-// primary: "#002169",
-// secondary: "#00b8e0",

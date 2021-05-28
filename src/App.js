@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense } from "react";
+import React, { useEffect, Suspense, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./style/custom-antd.css";
 import setAuthToken from "./redux/helper/setAuthToken";
@@ -14,7 +14,6 @@ import { GlobalStyle } from "./components/shared/styles/global";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./components/shared/styles/theme/Theme";
 import { useDarkMode } from "./components/shared/theme/useDarkMode";
-import Toggle from "./components/shared/theme/Toggler";
 
 import { Container, Wrapper } from "./components/shared/styles/layout";
 import Spinner from "./components/shared/spinner/Spinner";
@@ -28,17 +27,15 @@ if (localStorage.token) {
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
-  });
+  }, []);
 
-  const [theme, themeToggler, mountedComponent] = useDarkMode();
+  const [theme, themeToggler] = useDarkMode();
 
   const themeMode = theme === "light" ? lightTheme : darkTheme;
 
-  if (!mountedComponent) return <div />;
-
   return (
-    <ThemeProvider theme={themeMode}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <ThemeProvider theme={themeMode}>
         <BrowserRouter>
           <GlobalStyle />
           <Wrapper>
@@ -54,8 +51,8 @@ const App = () => {
             </ErrorBoundary>
           </Wrapper>
         </BrowserRouter>
-      </Provider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Provider>
   );
 };
 

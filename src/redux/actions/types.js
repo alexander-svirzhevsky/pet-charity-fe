@@ -14,3 +14,5 @@ export const ANIMAL_DELETED = "ANIMAL_DELETED";
 export const SET_FILTER = "SET_FILTER";
 export const ANIMAL_LOADING = "ANIMAL_LOADING";
 export const CLEAR_PROFILE = "CLEAR_PROFILE";
+export const AUTH_GOOGLE = "AUTH_GOOGLE";
+export const FAIL_GOOGLE_AUTH = "FAIL_GOOGLE_USER";

@@ -12,38 +12,9 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Pet Charity</title>
-    <!-- <meta
-      name="google-signin-client_id"
-      content="685181765937-u21ssegohqb8k1urigi9i2vq81sbjlls.apps.googleusercontent.com"
-    /> -->
-    <!-- <script src="https://apis.google.com/js/platform.js?onload=onGapiLoaded"></script>
-    <script>
-      function onGapiLoaded() {
-        console.log("gapi loaded");
-      }
-    </script> -->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <button onclick="signOut()">Sign Out</button> -->
     <div id="root"></div>
   </body>
-  <script>
-    function onSignIn(googleUser) {
-      console.log("User is" + JSON.stringify(googleUser.getBasicProfile()));
-
-      const info = googleUser.getBasicProfile().getGivenName();
-      console.log(info);
-    }
-
-    function signOut() {
-      gapi.auth2
-        .getAuthInstance()
-        .signOut()
-        .then(() => {
-          console.log("user signed out");
-        });
-    }
-  </script>
 </html>
