@@ -3,13 +3,15 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Input } from "antd";
 
+import GoogleAuth from "./GoogleAuth/GoogleAuth";
 import { login } from "../../redux/thunks/auth";
 import { Container, Title } from "../shared/styles/layout";
 import { BackgroundFill, Btn } from "../shared/styles/layout";
-import RegisterImg from "../../assets/images/cat3.jpg";
 
 const Login = () => {
   const dispatch = useDispatch();
+
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -25,14 +27,12 @@ const Login = () => {
     dispatch(login({ email, password }));
   };
 
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-
   if (isAuthenticated) {
     return <Redirect to="/" />;
   }
 
   return (
-    <BackgroundFill image={RegisterImg}>
+    <BackgroundFill>
       <Container>
         <Title>Log in</Title>
         <Form
@@ -79,6 +79,7 @@ const Login = () => {
             />
           </Form.Item>
           <Btn htmlType="submit">Log in</Btn>
+          <GoogleAuth />
         </Form>
       </Container>
     </BackgroundFill>

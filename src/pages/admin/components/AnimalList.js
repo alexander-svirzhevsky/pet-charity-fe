@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import * as queryString from "querystring";
+import Filter from "../../../components/shared/filter/Filter";
+import AnimalCard from "./AnimalCard";
 import { Pagination } from "antd";
-
 import { getAnimals } from "../../../redux/thunks/animal";
-import { AnimalItem } from "./AnimalItem";
 import {
   Container,
   List,
   Title,
   Btn,
+  SubTitle,
 } from "../../../components/shared/styles/layout";
 
 import Spinner from "../../../components/shared/spinner/Spinner";
 import { colors } from "../../../components/shared/styles/global";
-import Filter from "../../../components/shared/filter/Filter";
-import { useHistory } from "react-router";
-import * as queryString from "querystring";
 
-const Animals = () => {
+const AnimalList = () => {
   const [filterCriteria, setFilterCriteria] = useState({
     currentPage: 1,
     pageSize: 10,
@@ -33,11 +33,11 @@ const Animals = () => {
 
   const onPageChange = (page) => {
     setFilterCriteria({ ...filterCriteria, currentPage: page });
-    dispatch(getAnimals(page, pageSize, type, sex));
+    // dispatch(getAnimals(page, pageSize, type, sex));
   };
 
   // const onFiltersSubmit = (props) => {
-  // setFilterCriteria({ ...filterCriteria, type: props.type, sex: props.sex });
+  //   setFilterCriteria({ ...filterCriteria, type: props.type, sex: props.sex });
   // dispatch(getAnimals(1, pageSize, props.type, props.sex));
   // };
 
@@ -60,10 +60,10 @@ const Animals = () => {
     if (parsed.type) filter.type = parsed.type;
     if (parsed.sex) filter.sex = parsed.sex;
 
-    setFilterCriteria((prevState) => ({
-      ...prevState,
+    setFilterCriteria({
+      ...filterCriteria,
       ...filter,
-    }));
+    });
   }, []);
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const Animals = () => {
     }
 
     history.push({
-      pathname: "/profile",
+      pathname: "/admin/delete",
       // search: `?page=${currentPage}&type=${type}&sex=${sex}`,
       search: queryString.stringify(query),
     });
@@ -117,12 +117,18 @@ const Animals = () => {
             />
           </List>
           <List>
-            {animals.length !== 0 ? (
+            {animals.length !== 0 && animals.animals ? (
               animals.animals.map((animal) => (
-                <AnimalItem key={animal._id} animal={animal} />
+                <AnimalCard
+                  key={animal._id}
+                  animal={animal}
+                  filterCriteria={filterCriteria}
+                />
               ))
             ) : (
-              <p>Animals not found. Please, Try to refine your criteria</p>
+              <SubTitle color={colors.primary}>
+                Animals not found. Please, Try to refine your criteria
+              </SubTitle>
             )}
           </List>
         </>
@@ -131,4 +137,4 @@ const Animals = () => {
   );
 };
 
-export default Animals;
+export default AnimalList;

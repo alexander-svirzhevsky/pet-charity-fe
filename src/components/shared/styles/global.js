@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const colors = {
   primary: "#002169",
   secondary: "#00b8e0",
+  white: "#fff",
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -18,6 +19,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   color: #002169;
+  background: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
+  transition: all 0.3s linear;
 }
 
 .wrapper {
@@ -39,8 +43,10 @@ h3,
 h4,
 h5,
 h6 {
+  transition: all 0.6s linear;
   margin-top: 0;
   font-weight: normal;
+  color: ${({ theme }) => theme.text};
 }
 
 .tabel {

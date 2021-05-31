@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Form, Input, message } from "antd";
 
+import GoogleAuth from "./GoogleAuth/GoogleAuth";
 import { register } from "../../redux/thunks/auth";
 import { Container, Title } from "../shared/styles/layout";
 import { BackgroundFill, Btn } from "../shared/styles/layout";
-import RegisterImg from "../../assets/images/cat3.jpg";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const Register = () => {
   }
 
   return (
-    <BackgroundFill image={RegisterImg}>
+    <BackgroundFill>
       <Container>
         <Title>Register</Title>
         <Form
@@ -118,6 +118,7 @@ const Register = () => {
             />
           </Form.Item>
           <Btn htmlType="submit">Register</Btn>
+          <GoogleAuth />
         </Form>
       </Container>
     </BackgroundFill>

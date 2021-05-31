@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 95%;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
 `;
 
@@ -15,12 +15,13 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.header`
-  color: #002169;
+  /* color: #002169; */
   font-size: 17px;
   font-weight: 800;
   line-height: 30px;
   width: 100%;
-  border-bottom: 2px solid #efefef;
+  border-bottom: 2px solid;
+  border-color: ${({ theme }) => theme.borderColor};
 `;
 
 const FormArea = styled.header`
@@ -42,17 +43,19 @@ const List = styled.div`
   align-items: center;
   flex-wrap: wrap;
   margin-top: ${(props) => props.marginTop || "40px"};
+  margin-bottom: 10px;
 `;
 
 const Title = styled.h1`
+  position: relative;
   text-align: ${(props) => props.textAlign || "none"};
   font-weight: 800;
-  font-size: 36px;
-  line-height: 40px;
+  font-size: ${(props) => props.fontSize || "36px"};
+  line-height: ${(props) => props.lineHeight || "40px"};
   margin-bottom: ${(props) => props.marginBottom || "40px"};
   margin-top: ${(props) => props.marginTop || "0"};
-  color: #fff;
-  color: ${(props) => props.color || "white"};
+  /* color: ${(props) => props.color || "white"}; */
+  color: ${({ theme }) => theme.white}; ;
 `;
 
 const Heading = styled.h2`
@@ -60,11 +63,11 @@ const Heading = styled.h2`
   font-size: 34px;
   line-height: 40px;
   margin-bottom: ${(props) => props.marginBottom || "10px"};
-  color: #fff;
   color: ${(props) => props.color || "white"};
 `;
 
 const SubTitle = styled.p`
+  position: relative;
   display: block;
   letter-spacing: 1px;
   font-size: 17px;
@@ -88,18 +91,21 @@ const BackgroundFill = styled.div`
 `;
 
 const Btn = styled.button`
+  position: relative;
   background-color: #fff;
-  border: #00b8e0 2px solid;
-  font-size: 18px;
+  border: 2px solid;
+  border-color: ${(props) => props.borderColor || "#00b8e0"};
+  font-size: ${(props) => props.fontSize || "18px"};
   line-height: 30px;
-  padding: 15px 30px;
-  color: #002169;
+  padding: ${(props) => props.padding || "15px 30px"};
+  color: ${(props) => props.color || "#002169"};
   border-radius: 50px;
-  font-weight: 800;
+  font-weight: ${(props) => props.fontWeight || "800"};
   cursor: pointer;
   transition: all 0.3s ease;
   &:hover {
-    background-color: #00b8e0;
+    background-color: ${(props) => props.hoverColor || "#00b8e0"};
+    /* background-color: ${({ theme }) => theme.text}; */
     color: #fff;
   }
 `;
@@ -108,7 +114,7 @@ const AdditionalInfo = styled(Link)`
   display: block;
   font-weight: 600;
   margin: auto;
-  color: #002169;
+  color: ${({ theme }) => theme.text};
   font-size: 15px;
   line-height: 20px;
   padding: 5px 10px;
@@ -129,6 +135,9 @@ const Row = styled.div`
   padding: ${(props) => props.padding || 0};
   width: ${(props) => props.width || "100%"};
   margin-bottom: ${(props) => props.marginBottom || "5px"};
+  flex-direction: ${(props) => props.flexDirection || "initial"};
+  font-size: ${(props) => props.fontSize || "inherit"};
+  font-weight: ${(props) => props.fontWeight || "inherit"};
 `;
 
 const Col = styled.div`
