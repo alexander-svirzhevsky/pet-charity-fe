@@ -15,7 +15,6 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.header`
-  /* color: #002169; */
   font-size: 17px;
   font-weight: 800;
   line-height: 30px;
@@ -26,6 +25,16 @@ const Header = styled.header`
 
 const FormArea = styled.header`
   width: 100%;
+`;
+
+const SubLink = styled(Link)`
+  display: block;
+  color: ${({ theme }) => theme.text};
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
 `;
 
 const Section = styled.div`
@@ -54,8 +63,7 @@ const Title = styled.h1`
   line-height: ${(props) => props.lineHeight || "40px"};
   margin-bottom: ${(props) => props.marginBottom || "40px"};
   margin-top: ${(props) => props.marginTop || "0"};
-  /* color: ${(props) => props.color || "white"}; */
-  color: ${({ theme }) => theme.white}; ;
+  color: ${({ theme }) => theme.text};
 `;
 
 const Heading = styled.h2`
@@ -159,4 +167,5 @@ export {
   SubTitle,
   Heading,
   FormArea,
+  SubLink,
 };

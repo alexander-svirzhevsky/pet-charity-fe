@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Input } from "antd";
+import { Form, Input, Button, Typography, Space } from "antd";
+
+import { LoginOutlined } from "@ant-design/icons";
 
 import GoogleAuth from "./GoogleAuth/GoogleAuth";
 import { login } from "../../redux/thunks/auth";
-import { Container, Title } from "../shared/styles/layout";
+import { Container, Title, SubLink } from "../shared/styles/layout";
 import { BackgroundFill, Btn } from "../shared/styles/layout";
 
 const Login = () => {
@@ -19,6 +21,8 @@ const Login = () => {
   });
 
   const { email, password } = formData;
+
+  // const { Text, Link } = Typography;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -78,7 +82,16 @@ const Login = () => {
               placeholder="Password"
             />
           </Form.Item>
-          <Btn htmlType="submit">Log in</Btn>
+          <Button
+            style={{ marginBottom: "10px", backgroundColor: "#4285f4" }}
+            type="primary"
+            htmlType="submit"
+            size="large"
+            icon={<LoginOutlined />}
+          >
+            Log in
+          </Button>
+          <SubLink to="/forgot-password">Forgot the password?</SubLink>
           <GoogleAuth />
         </Form>
       </Container>

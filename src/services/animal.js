@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const addType = async (type) => {
   const response = await axios.post("/api/animalType", { type });
+
   return response;
 };
 

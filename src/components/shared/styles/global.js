@@ -8,7 +8,7 @@ const colors = {
 
 const GlobalStyle = createGlobalStyle`
  html,
-body {
+  body {
   height: 100%;
 }
 
@@ -29,12 +29,6 @@ body {
   width: 100%;
   min-height: 650px;
   overflow: hidden;
-}
-
-.container {
-  width: 95%;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 h1,
@@ -88,6 +82,18 @@ img {
 
 input {
   outline: none;
+}
+
+.ant-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+}
+
+.ant-form-item {
+  width: 40%;
 }
 `;
 
