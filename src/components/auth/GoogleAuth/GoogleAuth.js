@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { GoogleLogin } from "react-google-login";
 import { GoogleButton } from "react-google-button";
 import { message } from "antd";
-
 import { loadGoogleUser } from "../../../redux/thunks/auth";
 
 const GoogleAuth = () => {

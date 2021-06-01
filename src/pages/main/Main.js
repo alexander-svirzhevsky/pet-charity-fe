@@ -1,66 +1,67 @@
 import React from "react";
-import styled from "styled-components";
+import { ArrowRightOutlined } from "@ant-design/icons";
 
-import PetCharityVideo from "../../assets/video/petCharity.mp4";
+import HeroImg from "../../assets/images/hero.jpg";
+
 import {
   Container,
   Title,
   SubTitle,
-  Btn,
+  Navigate,
+  List,
 } from "../../components/shared/styles/layout";
+import { Hero, HeroContent } from "../../components/shared/styles/hero/hero";
 import { colors } from "../../components/shared/styles/global";
-
-const Video = styled.video`
-  width: 100vw;
-  object-fit: cover;
-  z-index: -1;
-`;
-
-const Hero = styled.div`
-  position: relative;
-`;
-
-const HeroContent = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1000;
-  width: 45%;
-  padding: 22px;
-  color: #002169;
-
-  &:before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    display: block;
-    background-color: #1f1f1e;
-    opacity: 0.5;
-    border-radius: 50px;
-  }
-`;
+import HeroCarousel from "./components/Carousel";
 
 const Main = () => {
   return (
-    <Hero>
-      <Video autoPlay loop muted>
-        <source src={PetCharityVideo} type="video/mp4" />
-      </Video>
+    <>
+      <Hero>
+        <img src={HeroImg} alt="charity"></img>
+        <Container>
+          <HeroContent>
+            <Title
+              color={colors.white}
+              marginBottom="20px"
+              lineHeight="1"
+              fontSize="50px"
+            >
+              Changing Lives Locally
+            </Title>
+            <SubTitle
+              color={colors.white}
+              marginBottom="20px"
+              color={colors.white}
+            >
+              When you adopt pet, you’re changing their life and yours. Make a
+              difference for a homeless pet and bring love home.
+            </SubTitle>
+            <Navigate to="/profile">
+              <span style={{ marginRight: "10px" }}>adopt</span>{" "}
+              <ArrowRightOutlined />
+            </Navigate>
+          </HeroContent>
+        </Container>
+      </Hero>
       <Container>
-        <HeroContent>
-          <Title marginBottom="20px" lineHeight="1" fontSize="50px">
-            Creating Unconditional Bonds
-          </Title>
-          <SubTitle marginBottom="20px" color={colors.white}>
-            By supporting pets & those who love them
+        <List>
+          <Title>Give with Confidence</Title>
+          <SubTitle weight={"500"} marginBottom={"20px"}>
+            For 17 years in a row, we've earned the highest rating from Charity
+            Navigator and remain in the top 1% of all charities ranked. Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+            officia deserunt mollit anim id est laborum.
           </SubTitle>
-          <Btn>get to know us</Btn>
-        </HeroContent>
+        </List>
+        <HeroCarousel />
       </Container>
-    </Hero>
+    </>
   );
 };
 

@@ -6,6 +6,7 @@ const Filter = ({ initialValues, setFilterCriteria, filterCriteria }) => {
   function typeChange(value) {
     setFilterCriteria({
       ...filterCriteria,
+      currentPage: 1,
       type: value,
     });
   }
@@ -13,6 +14,7 @@ const Filter = ({ initialValues, setFilterCriteria, filterCriteria }) => {
   function sexChange(value) {
     setFilterCriteria({
       ...filterCriteria,
+      currentPage: 1,
       sex: value,
     });
   }
@@ -49,20 +51,6 @@ const Filter = ({ initialValues, setFilterCriteria, filterCriteria }) => {
             <Option value="he">male</Option>
             <Option value="she">female</Option>
           </Select>
-          {/* <Field name="type" as="select">
-            <option value="">all</option>
-            <option value="cat">cat</option>
-            <option value="dog">dog</option>
-            <option value="bird">bird</option>
-          </Field> */}
-          {/* <Field as="select" name="sex">
-            <option value="">all</option>
-            <option value="he">male</option>
-            <option value="she">female</option>
-          </Field> */}
-          {/* <button type="submit" disabled={isSubmitting}>
-            Find
-          </button> */}
         </Form>
       )}
     </Formik>

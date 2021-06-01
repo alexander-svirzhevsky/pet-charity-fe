@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { Form, Input, message } from "antd";
+import { Form, Input, message, Button } from "antd";
+import { LoginOutlined } from "@ant-design/icons";
 
+import LoginImg from "../../assets/images/login.jpg";
 import GoogleAuth from "./GoogleAuth/GoogleAuth";
 import { register } from "../../redux/thunks/auth";
-import { Container, Title } from "../shared/styles/layout";
-import { BackgroundFill, Btn } from "../shared/styles/layout";
+import { Container, Title, BackgroundFill } from "../shared/styles/layout";
+import { colors } from "../shared/styles/global";
+import {
+  AuthContent,
+  LoginContent,
+  AuthGoogle,
+} from "../shared/styles/auth/auth";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -38,88 +45,112 @@ const Register = () => {
   }
 
   return (
-    <BackgroundFill>
+    <BackgroundFill image={LoginImg}>
       <Container>
-        <Title>Register</Title>
-        <Form
-          name="basic"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-        >
-          <Form.Item
-            label="Username"
-            name="name"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input
-              onChange={onChange}
-              value={name}
-              type="text"
-              name="name"
-              placeholder="Name"
-            />
-          </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input
-              onChange={onChange}
-              value={email}
-              type="email"
-              name="email"
-              placeholder="Email"
-            />
-          </Form.Item>
+        <AuthContent>
+          <LoginContent>
+            <Title color={colors.black} weight={"600"}>
+              Register
+            </Title>
+            <Form
+              name="basic"
+              initialValues={{
+                remember: true,
+              }}
+              onFinish={onFinish}
+            >
+              <Form.Item
+                label="Username"
+                name="name"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
+                <Input
+                  onChange={onChange}
+                  value={name}
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                />
+              </Form.Item>
+              <Form.Item
+                label="Email"
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
+                <Input
+                  onChange={onChange}
+                  value={email}
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                />
+              </Form.Item>
 
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input.Password
-              onChange={onChange}
-              value={password}
-              type="password"
-              name="password"
-              placeholder="Password"
-            />
-          </Form.Item>
-          <Form.Item
-            label="Password2"
-            name="password2"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input.Password
-              onChange={onChange}
-              value={password2}
-              type="password2"
-              name="password2"
-              placeholder="Confirm password"
-            />
-          </Form.Item>
-          <Btn htmlType="submit">Register</Btn>
-          <GoogleAuth />
-        </Form>
+              <Form.Item
+                label="Password"
+                name="password"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
+                <Input.Password
+                  onChange={onChange}
+                  value={password}
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
+              </Form.Item>
+              <Form.Item
+                label="Password2"
+                name="password2"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
+                <Input.Password
+                  onChange={onChange}
+                  value={password2}
+                  type="password2"
+                  name="password2"
+                  placeholder="Confirm password"
+                />
+              </Form.Item>
+              <Button
+                style={{
+                  marginBottom: "10px",
+                  backgroundColor: colors.primary,
+                  borderColor: colors.primary,
+                }}
+                type="primary"
+                htmlType="submit"
+                size="large"
+                icon={<LoginOutlined />}
+              >
+                Register
+              </Button>
+            </Form>
+          </LoginContent>
+          <AuthGoogle>
+            <span>
+              If you don't have an account you also can sign in using your
+              Google account
+            </span>
+            <GoogleAuth />
+          </AuthGoogle>
+        </AuthContent>
       </Container>
     </BackgroundFill>
   );

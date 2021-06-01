@@ -33,13 +33,7 @@ const Animals = () => {
 
   const onPageChange = (page) => {
     setFilterCriteria({ ...filterCriteria, currentPage: page });
-    dispatch(getAnimals(page, pageSize, type, sex));
   };
-
-  // const onFiltersSubmit = (props) => {
-  // setFilterCriteria({ ...filterCriteria, type: props.type, sex: props.sex });
-  // dispatch(getAnimals(1, pageSize, props.type, props.sex));
-  // };
 
   const onClear = () => {
     setFilterCriteria({

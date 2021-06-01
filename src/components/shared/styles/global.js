@@ -4,11 +4,12 @@ const colors = {
   primary: "#002169",
   secondary: "#00b8e0",
   white: "#fff",
+  black: "#000",
 };
 
 const GlobalStyle = createGlobalStyle`
  html,
-body {
+  body {
   height: 100%;
 }
 
@@ -29,12 +30,6 @@ body {
   width: 100%;
   min-height: 650px;
   overflow: hidden;
-}
-
-.container {
-  width: 95%;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 h1,
@@ -88,6 +83,33 @@ img {
 
 input {
   outline: none;
+}
+
+.ant-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ant-form-item {
+  width: 100%;
+}
+
+.ant-carousel .slick-dots li button {
+    background: #fff;
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+    opacity: 1;
+}
+
+.ant-carousel .slick-slide img {
+    object-fit: cover;
+}
+
+.ant-form-item-control-input {
+  max-width: 400px;
 }
 `;
 

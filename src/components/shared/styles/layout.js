@@ -15,7 +15,6 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.header`
-  /* color: #002169; */
   font-size: 17px;
   font-weight: 800;
   line-height: 30px;
@@ -24,12 +23,23 @@ const Header = styled.header`
   border-color: ${({ theme }) => theme.borderColor};
 `;
 
-const FormArea = styled.header`
+const FormArea = styled.div`
   width: 100%;
 `;
 
+const SubLink = styled(Link)`
+  display: block;
+  color: ${({ theme }) => theme.text};
+  color: ${(props) => props.color};
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+`;
+
 const Section = styled.div`
-  padding: 50px 0;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -49,13 +59,13 @@ const List = styled.div`
 const Title = styled.h1`
   position: relative;
   text-align: ${(props) => props.textAlign || "none"};
-  font-weight: 800;
+  font-weight: ${(props) => props.weight || "800"};
   font-size: ${(props) => props.fontSize || "36px"};
   line-height: ${(props) => props.lineHeight || "40px"};
   margin-bottom: ${(props) => props.marginBottom || "40px"};
   margin-top: ${(props) => props.marginTop || "0"};
-  /* color: ${(props) => props.color || "white"}; */
-  color: ${({ theme }) => theme.white}; ;
+  color: ${({ theme }) => theme.text};
+  color: ${(props) => props.color};
 `;
 
 const Heading = styled.h2`
@@ -72,9 +82,9 @@ const SubTitle = styled.p`
   letter-spacing: 1px;
   font-size: 17px;
   margin-bottom: ${(props) => props.marginBottom || "5px"};
-  font-weight: 900;
-  color: ${(props) => props.color || "black"};
-  text-transform: lowercase;
+  font-weight: ${(props) => props.weight || "900"};
+  color: ${({ theme }) => theme.text};
+  color: ${(props) => props.color};
 `;
 
 const BackgroundFill = styled.div`
@@ -105,7 +115,25 @@ const Btn = styled.button`
   transition: all 0.3s ease;
   &:hover {
     background-color: ${(props) => props.hoverColor || "#00b8e0"};
-    /* background-color: ${({ theme }) => theme.text}; */
+    color: #fff;
+  }
+`;
+
+const Navigate = styled(Link)`
+  position: relative;
+  background-color: #fff;
+  border: 2px solid;
+  border-color: ${(props) => props.borderColor || "#00b8e0"};
+  font-size: ${(props) => props.fontSize || "18px"};
+  line-height: 30px;
+  padding: ${(props) => props.padding || "15px 30px"};
+  color: ${(props) => props.color || "#002169"};
+  border-radius: 50px;
+  font-weight: ${(props) => props.fontWeight || "800"};
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: ${(props) => props.hoverColor || "#00b8e0"};
     color: #fff;
   }
 `;
@@ -159,4 +187,6 @@ export {
   SubTitle,
   Heading,
   FormArea,
+  SubLink,
+  Navigate,
 };
