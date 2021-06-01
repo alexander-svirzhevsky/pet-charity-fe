@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Form, Input, message, Button } from "antd";
 
-import { Container } from "../../shared/styles/layout";
+import { BackgroundFill, Container, Title } from "../../shared/styles/layout";
+import { AuthContent, LoginContent } from "../../shared/styles/auth/auth";
+import LoginImg from "../../../assets/images/login.jpg";
+import { colors } from "../../shared/styles/global";
 import { postNewPass } from "../../../services/forgetPassword";
 
 const ResetPassword = () => {
@@ -42,55 +45,71 @@ const ResetPassword = () => {
   }, []);
 
   return (
-    <div>
+    <BackgroundFill image={LoginImg}>
       <Container>
-        <Form
-          name="basic"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-        >
-          <Form.Item
-            label="New Password"
-            name="newPass"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input.Password
-              onChange={onChange}
-              value={newPass}
-              type="newPass"
-              name="newPass"
-              placeholder="New Password"
-            />
-          </Form.Item>
-          <Form.Item
-            label="Confirm Password"
-            name="confirmNewPass"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input.Password
-              onChange={onChange}
-              value={confirmNewPass}
-              type="confirmNewPass"
-              name="confirmNewPass"
-              placeholder="Confirm password"
-            />
-          </Form.Item>
-          <Button type="primary" htmlType="submit" size="large">
-            Update password
-          </Button>
-        </Form>
+        <AuthContent>
+          <LoginContent>
+            <Title fontSize={"25px"} color={colors.black} weight={"400"}>
+              Please enter a new password
+            </Title>
+            <Form
+              name="basic"
+              initialValues={{
+                remember: true,
+              }}
+              onFinish={onFinish}
+            >
+              <Form.Item
+                label="New Password"
+                name="newPass"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
+                <Input.Password
+                  onChange={onChange}
+                  value={newPass}
+                  type="newPass"
+                  name="newPass"
+                  placeholder="New Password"
+                />
+              </Form.Item>
+              <Form.Item
+                label="Confirm Password"
+                name="confirmNewPass"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
+                <Input.Password
+                  onChange={onChange}
+                  value={confirmNewPass}
+                  type="confirmNewPass"
+                  name="confirmNewPass"
+                  placeholder="Confirm password"
+                />
+              </Form.Item>
+              <Button
+                style={{
+                  marginBottom: "10px",
+                  backgroundColor: colors.primary,
+                  borderColor: colors.primary,
+                }}
+                type="primary"
+                htmlType="submit"
+                size="large"
+              >
+                Update password
+              </Button>
+            </Form>
+          </LoginContent>
+        </AuthContent>
       </Container>
-    </div>
+    </BackgroundFill>
   );
 };
 

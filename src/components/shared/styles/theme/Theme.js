@@ -17,4 +17,5 @@ export const darkTheme = {
   hover: "rgb(4%, 5%, 6%, .5)",
   borderColor: "#efefef",
   secondary: "#00b8e0",
+  white: "#fff",
 };

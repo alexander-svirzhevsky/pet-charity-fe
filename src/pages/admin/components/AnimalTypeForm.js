@@ -24,36 +24,34 @@ const AnimalTypeForm = () => {
   const onChange = (e) => setType(e.target.value);
 
   return (
-    <Section flex="0 0 45%">
-      <FormArea>
-        <Form
-          name="basic"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
+    <FormArea>
+      <Form
+        name="basic"
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+      >
+        <Form.Item
+          label="Animal Type"
+          name="type"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
         >
-          <Form.Item
-            label="Animal Type"
+          <Input
+            onChange={onChange}
+            value={type}
+            type="text"
             name="type"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input
-              onChange={onChange}
-              value={type}
-              type="text"
-              name="type"
-              placeholder="Animal Type"
-            />
-          </Form.Item>
-          <Btn htmlType="submit">Add animal type</Btn>
-        </Form>
-      </FormArea>
-    </Section>
+            placeholder="Animal Type"
+          />
+        </Form.Item>
+        <Btn htmlType="submit">Add animal type</Btn>
+      </Form>
+    </FormArea>
   );
 };
 
