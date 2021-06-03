@@ -111,6 +111,7 @@ input {
 .ant-form-item-control-input {
   max-width: 400px;
 }
+
 `;
 
 export { GlobalStyle, colors };

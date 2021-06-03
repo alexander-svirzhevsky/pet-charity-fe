@@ -89,15 +89,16 @@ const SubTitle = styled.p`
 
 const BackgroundFill = styled.div`
   width: 100%;
-  height: 90vh;
+  height: ${(props) => props.height || "90vh"};
   background-image: url(${(props) => props.image});
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
+  align-items: ${(props) => props.alignItems || "center"};
+  text-align: ${(props) => props.textAlign || "center"};
+  justify-content: ${(props) => props.justifyContent || "center"};
+  margin: ${(props) => props.margin || "0"};
 `;
 
 const Btn = styled.button`
@@ -172,6 +173,10 @@ const Col = styled.div`
   flex: 0 0 50%;
 `;
 
+const Descriptions = styled.div`
+  padding: ${(props) => props.padding || "10px"};
+`;
+
 export {
   Container,
   Wrapper,
@@ -189,4 +194,5 @@ export {
   FormArea,
   SubLink,
   Navigate,
+  Descriptions,
 };
