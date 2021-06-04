@@ -5,13 +5,14 @@ import * as queryString from "querystring";
 import Filter from "../../../components/shared/filter/Filter";
 import AnimalCard from "./AnimalCard";
 import { Pagination } from "antd";
+import { ClearOutlined } from "@ant-design/icons";
 import { getAnimals } from "../../../redux/thunks/animal";
 import {
   Container,
   List,
   Title,
-  Btn,
   SubTitle,
+  DefaultButton,
 } from "../../../components/shared/styles/layout";
 
 import Spinner from "../../../components/shared/spinner/Spinner";
@@ -86,9 +87,7 @@ const AnimalList = () => {
 
   return (
     <Container>
-      <Title color={colors.primary} textAlign="center">
-        Animals
-      </Title>
+      <Title textAlign="center">Animals</Title>
       {loading ? (
         <Spinner />
       ) : (
@@ -100,7 +99,13 @@ const AnimalList = () => {
             setFilterCriteria={setFilterCriteria}
             filterCriteria={filterCriteria}
           />
-          <Btn onClick={onClear}>clear the filter</Btn>
+          <DefaultButton
+            onClick={onClear}
+            size="large"
+            icon={<ClearOutlined />}
+          >
+            clear the filter
+          </DefaultButton>
           <List>
             <Pagination
               showQuickJumper

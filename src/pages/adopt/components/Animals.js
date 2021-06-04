@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Pagination, Button } from "antd";
+import { Pagination } from "antd";
 import { ClearOutlined } from "@ant-design/icons";
 
 import { getAnimals } from "../../../redux/thunks/animal";
@@ -12,6 +12,7 @@ import {
   BackgroundFill,
   SubTitle,
   Descriptions,
+  DefaultButton,
 } from "../../../components/shared/styles/layout";
 
 import AdoptImage from "../../../assets/images/adopt.jpg";
@@ -119,21 +120,13 @@ const Animals = () => {
               setFilterCriteria={setFilterCriteria}
               filterCriteria={filterCriteria}
             />
-            <Button
-              style={{
-                marginBottom: "20px",
-                marginTop: "20px",
-                backgroundColor: colors.primary,
-                borderColor: colors.primary,
-              }}
-              type="primary"
-              htmlType="submit"
+            <DefaultButton
+              onClick={onClear}
               size="large"
               icon={<ClearOutlined />}
-              onClick={onClear}
             >
-              Clear the filter
-            </Button>
+              clear the filter
+            </DefaultButton>
             <List>
               <Pagination
                 showQuickJumper

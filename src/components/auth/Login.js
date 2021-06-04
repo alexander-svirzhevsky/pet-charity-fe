@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Input, Button } from "antd";
+import { Form, Input } from "antd";
 import { LoginOutlined } from "@ant-design/icons";
 
 import LoginImg from "../../assets/images/login.jpg";
@@ -12,6 +12,7 @@ import {
   Title,
   SubLink,
   BackgroundFill,
+  DefaultButton,
 } from "../shared/styles/layout";
 import { colors } from "../shared/styles/global";
 import {
@@ -94,19 +95,13 @@ const Login = () => {
                   placeholder="Password"
                 />
               </Form.Item>
-              <Button
-                style={{
-                  marginBottom: "10px",
-                  backgroundColor: colors.primary,
-                  borderColor: colors.primary,
-                }}
-                type="primary"
+              <DefaultButton
                 htmlType="submit"
                 size="large"
                 icon={<LoginOutlined />}
               >
                 Log in
-              </Button>
+              </DefaultButton>
               <SubLink color={colors.black} to="/forgot-password">
                 Forgot the password?
               </SubLink>

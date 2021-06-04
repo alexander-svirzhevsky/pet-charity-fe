@@ -5,6 +5,7 @@ const colors = {
   secondary: "#00b8e0",
   white: "#fff",
   black: "#000",
+  red: "#dd2750",
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -23,6 +24,10 @@ body {
   background: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
   transition: all 0.3s linear;
+}
+
+.ant-form-item-label > label {
+  color: ${({ theme }) => theme.label};
 }
 
 .wrapper {

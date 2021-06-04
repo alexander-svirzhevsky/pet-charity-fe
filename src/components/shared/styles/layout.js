@@ -1,10 +1,42 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Button } from "antd";
+
+const DefaultButton = styled(Button)`
+  margin: ${(props) => props.margin || "20px"};
+  background-color: ${({ theme }) => theme.blue};
+  border-color: ${({ theme }) => theme.blue};
+  color: ${(props) => props.color || "#fff"};
+  transform: all 0.5s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.blue};
+    border-color: ${({ theme }) => theme.blue};
+    color: #fff;
+    box-shadow: 0px 4px 14px 3px ${({ theme }) => theme.defaultBtnHover};
+  }
+`;
+
+const DeleteButton = styled(Button)`
+  margin: ${(props) => props.margin || "20px"};
+  background-color: ${({ theme }) => theme.red};
+  border-color: ${({ theme }) => theme.red};
+  color: ${(props) => props.color || "#fff"};
+  transform: all 0.5s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.red};
+    border-color: ${({ theme }) => theme.red};
+    color: #fff;
+    box-shadow: 0px 4px 14px 3px ${({ theme }) => theme.red};
+  }
+`;
 
 const Container = styled.div`
   width: 95%;
   max-width: 1100px;
   margin: 0 auto;
+  text-align: ${(props) => props.textAling};
 `;
 
 const Wrapper = styled.div`
@@ -21,10 +53,12 @@ const Header = styled.header`
   width: 100%;
   border-bottom: 2px solid;
   border-color: ${({ theme }) => theme.borderColor};
+  background-color: ${({ theme }) => theme.header};
 `;
 
 const FormArea = styled.div`
   width: 100%;
+  margin-bottom: 40px;
 `;
 
 const SubLink = styled(Link)`
@@ -177,6 +211,13 @@ const Descriptions = styled.div`
   padding: ${(props) => props.padding || "10px"};
 `;
 
+const FormContent = styled.div`
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 50px;
+  width: 50%;
+`;
+
 export {
   Container,
   Wrapper,
@@ -195,4 +236,7 @@ export {
   SubLink,
   Navigate,
   Descriptions,
+  FormContent,
+  DefaultButton,
+  DeleteButton,
 };
