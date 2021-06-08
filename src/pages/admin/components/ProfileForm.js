@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Form, Input, message } from "antd";
+import { FileAddOutlined } from "@ant-design/icons";
 
-import { Btn, Container } from "../../../components/shared/styles/layout";
+import {
+  Container,
+  FormContent,
+  DefaultButton,
+} from "../../../components/shared/styles/layout";
 import { addProfile } from "../../../services/animal";
 
 const ProfileForm = () => {
@@ -31,134 +36,142 @@ const ProfileForm = () => {
   };
 
   return (
-    <Container>
-      <Form
-        name="basic"
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
-      >
-        <Form.Item
-          label="Name"
-          name="name"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
+    <Container textAling="center">
+      <FormContent>
+        <Form
+          name="basic"
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
         >
-          <Input
-            onChange={onChange}
-            value={name}
-            type="text"
+          <Form.Item
+            label="Name"
             name="name"
-            placeholder="Animal Name"
-          />
-        </Form.Item>
-        <Form.Item
-          label="Age"
-          name="age"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input
-            onChange={onChange}
-            value={age}
-            type="number"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={name}
+              type="text"
+              name="name"
+              placeholder="Animal Name"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Age"
             name="age"
-            placeholder="Age"
-          />
-        </Form.Item>
-        <Form.Item
-          label="Color"
-          name="color"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input
-            onChange={onChange}
-            value={color}
-            type="text"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={age}
+              type="number"
+              name="age"
+              placeholder="Age"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Color"
             name="color"
-            placeholder="Color"
-          />
-        </Form.Item>
-        <Form.Item
-          label="Size"
-          name="size"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input
-            onChange={onChange}
-            value={size}
-            type="text"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={color}
+              type="text"
+              name="color"
+              placeholder="Color"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Size"
             name="size"
-            placeholder="Size"
-          />
-        </Form.Item>
-        <Form.Item
-          label="Story"
-          name="story"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input.TextArea
-            onChange={onChange}
-            value={story}
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={size}
+              type="text"
+              name="size"
+              placeholder="Size"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Story"
             name="story"
-            placeholder="Story"
-          />
-        </Form.Item>
-        <Form.Item
-          label="Phone"
-          name="phone"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input
-            onChange={onChange}
-            value={phone}
-            type="text"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input.TextArea
+              onChange={onChange}
+              value={story}
+              name="story"
+              placeholder="Story"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Phone"
             name="phone"
-            placeholder="Phone"
-          />
-        </Form.Item>
-        <Form.Item
-          label="Location"
-          name="location"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input
-            onChange={onChange}
-            value={location}
-            type="text"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={phone}
+              type="text"
+              name="phone"
+              placeholder="Phone"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Location"
             name="location"
-            placeholder="Location"
-          />
-        </Form.Item>
-        <Btn htmlType="submit">Create profile</Btn>
-      </Form>
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={location}
+              type="text"
+              name="location"
+              placeholder="Location"
+            />
+          </Form.Item>
+          <DefaultButton
+            htmlType="submit"
+            size="large"
+            icon={<FileAddOutlined />}
+          >
+            Create profile
+          </DefaultButton>
+        </Form>
+      </FormContent>
     </Container>
   );
 };

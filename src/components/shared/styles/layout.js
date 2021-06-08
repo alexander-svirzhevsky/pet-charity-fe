@@ -1,10 +1,42 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Button } from "antd";
+
+const DefaultButton = styled(Button)`
+  margin: ${(props) => props.margin || "20px"};
+  background-color: ${({ theme }) => theme.blue};
+  border-color: ${({ theme }) => theme.blue};
+  color: ${(props) => props.color || "#fff"};
+  transform: all 0.5s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.blue};
+    border-color: ${({ theme }) => theme.blue};
+    color: #fff;
+    box-shadow: 0px 4px 14px 3px ${({ theme }) => theme.defaultBtnHover};
+  }
+`;
+
+const DeleteButton = styled(Button)`
+  margin: ${(props) => props.margin || "20px"};
+  background-color: ${({ theme }) => theme.red};
+  border-color: ${({ theme }) => theme.red};
+  color: ${(props) => props.color || "#fff"};
+  transform: all 0.5s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.red};
+    border-color: ${({ theme }) => theme.red};
+    color: #fff;
+    box-shadow: 0px 4px 14px 3px ${({ theme }) => theme.red};
+  }
+`;
 
 const Container = styled.div`
   width: 95%;
   max-width: 1100px;
   margin: 0 auto;
+  text-align: ${(props) => props.textAling};
 `;
 
 const Wrapper = styled.div`
@@ -21,10 +53,12 @@ const Header = styled.header`
   width: 100%;
   border-bottom: 2px solid;
   border-color: ${({ theme }) => theme.borderColor};
+  background-color: ${({ theme }) => theme.header};
 `;
 
 const FormArea = styled.div`
   width: 100%;
+  margin-bottom: 40px;
 `;
 
 const SubLink = styled(Link)`
@@ -49,7 +83,7 @@ const Section = styled.div`
 
 const List = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: ${(props) => props.justifyContent || "center"};
   align-items: center;
   flex-wrap: wrap;
   margin-top: ${(props) => props.marginTop || "40px"};
@@ -89,15 +123,16 @@ const SubTitle = styled.p`
 
 const BackgroundFill = styled.div`
   width: 100%;
-  height: 90vh;
+  height: ${(props) => props.height || "90vh"};
   background-image: url(${(props) => props.image});
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
+  align-items: ${(props) => props.alignItems || "center"};
+  text-align: ${(props) => props.textAlign || "center"};
+  justify-content: ${(props) => props.justifyContent || "center"};
+  margin: ${(props) => props.margin || "0"};
 `;
 
 const Btn = styled.button`
@@ -139,7 +174,7 @@ const Navigate = styled(Link)`
 `;
 
 const AdditionalInfo = styled(Link)`
-  display: block;
+  display: ${(props) => props.display || "block"};
   font-weight: 600;
   margin: auto;
   color: ${({ theme }) => theme.text};
@@ -169,7 +204,18 @@ const Row = styled.div`
 `;
 
 const Col = styled.div`
-  flex: 0 0 50%;
+  flex: ${(props) => props.flex || "0 0 50%"};
+`;
+
+const Descriptions = styled.div`
+  padding: ${(props) => props.padding || "10px"};
+`;
+
+const FormContent = styled.div`
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 50px;
+  width: 50%;
 `;
 
 export {
@@ -189,4 +235,8 @@ export {
   FormArea,
   SubLink,
   Navigate,
+  Descriptions,
+  FormContent,
+  DefaultButton,
+  DeleteButton,
 };

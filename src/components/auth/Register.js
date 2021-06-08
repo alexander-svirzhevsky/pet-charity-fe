@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { Form, Input, message, Button } from "antd";
+import { Form, Input, message } from "antd";
 import { LoginOutlined } from "@ant-design/icons";
 
 import LoginImg from "../../assets/images/login.jpg";
 import GoogleAuth from "./GoogleAuth/GoogleAuth";
 import { register } from "../../redux/thunks/auth";
-import { Container, Title, BackgroundFill } from "../shared/styles/layout";
+import {
+  Container,
+  Title,
+  BackgroundFill,
+  DefaultButton,
+} from "../shared/styles/layout";
 import { colors } from "../shared/styles/global";
 import {
   AuthContent,
@@ -128,7 +133,7 @@ const Register = () => {
                   placeholder="Confirm password"
                 />
               </Form.Item>
-              <Button
+              {/* <Button
                 style={{
                   marginBottom: "10px",
                   backgroundColor: colors.primary,
@@ -140,7 +145,14 @@ const Register = () => {
                 icon={<LoginOutlined />}
               >
                 Register
-              </Button>
+              </Button> */}
+              <DefaultButton
+                htmlType="submit"
+                size="large"
+                icon={<LoginOutlined />}
+              >
+                Register
+              </DefaultButton>
             </Form>
           </LoginContent>
           <AuthGoogle>

@@ -29,11 +29,7 @@ const Main = () => {
             >
               Changing Lives Locally
             </Title>
-            <SubTitle
-              color={colors.white}
-              marginBottom="20px"
-              color={colors.white}
-            >
+            <SubTitle color={colors.white} marginBottom="20px">
               When you adopt pet, you’re changing their life and yours. Make a
               difference for a homeless pet and bring love home.
             </SubTitle>

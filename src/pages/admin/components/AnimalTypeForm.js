@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Form, Input, message } from "antd";
+import { FileAddOutlined } from "@ant-design/icons";
 
 import {
-  Btn,
   FormArea,
-  Section,
+  DefaultButton,
 } from "../../../components/shared/styles/layout";
 import { addType } from "../../../services/animal";
 
@@ -49,7 +49,13 @@ const AnimalTypeForm = () => {
             placeholder="Animal Type"
           />
         </Form.Item>
-        <Btn htmlType="submit">Add animal type</Btn>
+        <DefaultButton
+          htmlType="submit"
+          size="large"
+          icon={<FileAddOutlined />}
+        >
+          Add animal type
+        </DefaultButton>
       </Form>
     </FormArea>
   );

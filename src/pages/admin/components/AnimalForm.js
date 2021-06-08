@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Form, Input, message } from "antd";
+import { FileAddOutlined } from "@ant-design/icons";
 
-import { Btn } from "../../../components/shared/styles/layout";
 import { addAnimal } from "../../../services/animal";
-import { Container } from "../../../components/shared/styles/layout";
+import {
+  Container,
+  FormContent,
+  DefaultButton,
+} from "../../../components/shared/styles/layout";
 
 const AnimalForm = () => {
   const [formData, setFormData] = useState({
@@ -29,84 +33,92 @@ const AnimalForm = () => {
   };
 
   return (
-    <Container>
-      <Form
-        name="basic"
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
-      >
-        <Form.Item
-          label="Name"
-          name="name"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
+    <Container textAling="center">
+      <FormContent>
+        <Form
+          name="basic"
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
         >
-          <Input
-            onChange={onChange}
-            value={name}
-            type="text"
+          <Form.Item
+            label="Name"
             name="name"
-            placeholder="Animal Name"
-          />
-        </Form.Item>
-        <Form.Item
-          label="Gender"
-          name="sex"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input
-            onChange={onChange}
-            value={sex}
-            type="text"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={name}
+              type="text"
+              name="name"
+              placeholder="Animal Name"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Gender"
             name="sex"
-            placeholder="Gender"
-          />
-        </Form.Item>
-        <Form.Item
-          label="Breed Name"
-          name="breedName"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input
-            onChange={onChange}
-            value={breedName}
-            type="text"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={sex}
+              type="text"
+              name="sex"
+              placeholder="Gender"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Breed Name"
             name="breedName"
-            placeholder="Breed Name"
-          />
-        </Form.Item>
-        <Form.Item
-          label="Animal Type"
-          name="type"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input
-            onChange={onChange}
-            value={type}
-            type="text"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={breedName}
+              type="text"
+              name="breedName"
+              placeholder="Breed Name"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Animal Type"
             name="type"
-            placeholder="Animal Type"
-          />
-        </Form.Item>
-        <Btn htmlType="submit">Add animal</Btn>
-      </Form>
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={onChange}
+              value={type}
+              type="text"
+              name="type"
+              placeholder="Animal Type"
+            />
+          </Form.Item>
+          <DefaultButton
+            htmlType="submit"
+            size="large"
+            icon={<FileAddOutlined />}
+          >
+            Add animal
+          </DefaultButton>
+        </Form>
+      </FormContent>
     </Container>
   );
 };

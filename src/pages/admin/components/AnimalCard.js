@@ -1,12 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteAnimal, getAnimals } from "../../../redux/thunks/animal";
+import { DeleteOutlined } from "@ant-design/icons";
 import {
   Item,
   Name,
   Breed,
 } from "../../../components/shared/styles/animal/animalCard";
-import { Btn } from "../../../components/shared/styles/layout";
+import { colors } from "../../../components/shared/styles/global";
+import { DeleteButton } from "../../../components/shared/styles/layout";
 
 const AnimalCard = ({
   animal: {
@@ -22,7 +24,14 @@ const AnimalCard = ({
 
   const onFinish = (id) => {
     dispatch(deleteAnimal(id));
-    dispatch(getAnimals(filterCriteria.currentPage, filterCriteria.pageSize, filterCriteria.type, filterCriteria.sex));
+    dispatch(
+      getAnimals(
+        filterCriteria.currentPage,
+        filterCriteria.pageSize,
+        filterCriteria.type,
+        filterCriteria.sex
+      )
+    );
   };
 
   return (
@@ -31,17 +40,15 @@ const AnimalCard = ({
         {name} / {type} / {sex}
       </Name>
       <Breed marginBottom="25px">{breedName}</Breed>
-      <Btn
+      <DeleteButton
         onClick={() => onFinish(_id)}
-        hoverColor="#f51d24"
-        borderColor="#f51d24"
-        color="#f51d24"
-        padding="0 30px"
-        fontSize="14px"
-        fontWeight="600"
+        backgroundColor={colors.red}
+        borderColor={colors.red}
+        margin="0"
+        icon={<DeleteOutlined />}
       >
-        delete
-      </Btn>
+        Delete
+      </DeleteButton>
     </Item>
   );
 };

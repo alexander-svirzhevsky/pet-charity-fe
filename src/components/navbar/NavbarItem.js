@@ -8,8 +8,9 @@ const Navigation = styled(Link)`
   padding: 20px 15px;
   transition: all 0.3s ease;
   &:hover {
-    background-color: ${({ theme }) => theme.hover};
     color: #fff;
+    background-color: ${({ theme }) => theme.hover};
+    color: ${({ theme }) => theme.textHover};
   }
 `;
 

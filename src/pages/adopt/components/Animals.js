@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Pagination } from "antd";
+import { ClearOutlined } from "@ant-design/icons";
 
 import { getAnimals } from "../../../redux/thunks/animal";
 import { AnimalItem } from "./AnimalItem";
@@ -8,9 +9,13 @@ import {
   Container,
   List,
   Title,
-  Btn,
+  BackgroundFill,
+  SubTitle,
+  Descriptions,
+  DefaultButton,
 } from "../../../components/shared/styles/layout";
 
+import AdoptImage from "../../../assets/images/adopt.jpg";
 import Spinner from "../../../components/shared/spinner/Spinner";
 import { colors } from "../../../components/shared/styles/global";
 import Filter from "../../../components/shared/filter/Filter";
@@ -85,43 +90,65 @@ const Animals = () => {
   }, [dispatch, filterCriteria]);
 
   return (
-    <Container>
-      <Title color={colors.primary} textAlign="center">
-        Animals
-      </Title>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <>
-          <Filter
-            currentPage={currentPage}
-            pageSize={pageSize}
-            initialValues={{ type, sex }}
-            setFilterCriteria={setFilterCriteria}
-            filterCriteria={filterCriteria}
-          />
-          <Btn onClick={onClear}>clear the filter</Btn>
-          <List>
-            <Pagination
-              showQuickJumper
-              onChange={onPageChange}
-              defaultCurrent={1}
-              current={currentPage}
-              total={animals.count}
+    <>
+      <Container>
+        <BackgroundFill
+          margin="0 0 30px 0"
+          alignItems="flex-end"
+          justifyContent="flex-start"
+          height="400px"
+          image={AdoptImage}
+          textAlign="initial"
+        >
+          <Descriptions padding="30px">
+            <Title marginBottom="10px" color={colors.white} textAlign="initial">
+              Adoption Changes Lives
+            </Title>
+            <SubTitle weight="500" color={colors.white}>
+              Theirs and yours. Find your new best friend here.
+            </SubTitle>
+          </Descriptions>
+        </BackgroundFill>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <>
+            <Filter
+              currentPage={currentPage}
+              pageSize={pageSize}
+              initialValues={{ type, sex }}
+              setFilterCriteria={setFilterCriteria}
+              filterCriteria={filterCriteria}
             />
-          </List>
-          <List>
-            {animals.length !== 0 ? (
-              animals.animals.map((animal) => (
-                <AnimalItem key={animal._id} animal={animal} />
-              ))
-            ) : (
-              <p>Animals not found. Please, Try to refine your criteria</p>
-            )}
-          </List>
-        </>
-      )}
-    </Container>
+            <DefaultButton
+              onClick={onClear}
+              size="large"
+              icon={<ClearOutlined />}
+            >
+              clear the filter
+            </DefaultButton>
+            <List>
+              <Pagination
+                showQuickJumper
+                onChange={onPageChange}
+                defaultCurrent={1}
+                current={currentPage}
+                total={animals.count}
+              />
+            </List>
+            <List>
+              {animals.length !== 0 ? (
+                animals.animals.map((animal) => (
+                  <AnimalItem key={animal._id} animal={animal} />
+                ))
+              ) : (
+                <p>Animals not found. Please, Try to refine your criteria</p>
+              )}
+            </List>
+          </>
+        )}
+      </Container>
+    </>
   );
 };
 

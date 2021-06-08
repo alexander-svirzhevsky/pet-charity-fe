@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch } from "react-router-dom";
+import { Redirect, Switch } from "react-router-dom";
 import { Container, Row } from "../../components/shared/styles/layout";
 import NavbarItem from "../../components/navbar/NavbarItem";
 
@@ -12,6 +12,7 @@ import AnimalList from "../../pages/admin/components/AnimalList";
 const Admin = () => {
   return (
     <Container>
+      <Redirect to="/admin/breed_type" />
       <Row fontSize="15px" fontWeight="700">
         <NavbarItem to="/admin/breed_type" text="Add breed & type" />
         <NavbarItem to="/admin/animal" text="Add animal" />
