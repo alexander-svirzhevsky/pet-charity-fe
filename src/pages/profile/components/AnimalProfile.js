@@ -30,11 +30,11 @@ const AnimalProfile = ({
   },
 }) => {
   return (
-    <List marginTop="50px">
+    <List justifyContent="space-between" marginTop="50px">
       <Col>
         <img src={defaultImg} alt={name} />
       </Col>
-      <Col>
+      <Col flex="0 0 45%">
         <SubTitle color={colors.secondary}>Hi, I'm</SubTitle>
         <Title marginBottom="5px" color={colors.primary}>
           {name}
@@ -73,7 +73,9 @@ const AnimalProfile = ({
         </Heading>
         <p>{story}</p>
         <SubTitle color={colors.primary}>Phone: {phone} </SubTitle>
-        <AdditionalInfo to="/profile">move back</AdditionalInfo>
+        <AdditionalInfo display="inline-block" to="/profile">
+          move back
+        </AdditionalInfo>
       </Col>
     </List>
   );

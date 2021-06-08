@@ -8,10 +8,7 @@ import {
   Breed,
 } from "../../../components/shared/styles/animal/animalCard";
 import { colors } from "../../../components/shared/styles/global";
-import {
-  DefaultButton,
-  DeleteButton,
-} from "../../../components/shared/styles/layout";
+import { DeleteButton } from "../../../components/shared/styles/layout";
 
 const AnimalCard = ({
   animal: {

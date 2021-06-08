@@ -7,7 +7,6 @@ export const lightTheme = {
   white: "#fff",
   hover: "#00b8e0",
   borderColor: "#efefef",
-  secondary: "#00b8e0",
   secondary: "#1890ff",
   blue: "#002169",
   defaultBtnHover: "#002169",

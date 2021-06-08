@@ -83,7 +83,7 @@ const Section = styled.div`
 
 const List = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: ${(props) => props.justifyContent || "center"};
   align-items: center;
   flex-wrap: wrap;
   margin-top: ${(props) => props.marginTop || "40px"};
@@ -174,7 +174,7 @@ const Navigate = styled(Link)`
 `;
 
 const AdditionalInfo = styled(Link)`
-  display: block;
+  display: ${(props) => props.display || "block"};
   font-weight: 600;
   margin: auto;
   color: ${({ theme }) => theme.text};
@@ -204,7 +204,7 @@ const Row = styled.div`
 `;
 
 const Col = styled.div`
-  flex: 0 0 50%;
+  flex: ${(props) => props.flex || "0 0 50%"};
 `;
 
 const Descriptions = styled.div`
