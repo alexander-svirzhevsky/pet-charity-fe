@@ -16,12 +16,25 @@ export const AnimalItem = ({
     sex,
     type: { type },
     breedName: { breedName },
+    avatar,
   },
 }) => {
   return (
     <Item>
       <Photo>
-        <img src={defaultImg} alt={name} />
+        {avatar ? (
+          <img
+            style={{ height: "100%", objectFit: "cover" }}
+            src={avatar}
+            alt={name}
+          />
+        ) : (
+          <img
+            style={{ height: "100%", objectFit: "cover" }}
+            src={defaultImg}
+            alt={name}
+          />
+        )}
       </Photo>
       <Name>
         {name} / {type} / {sex}

@@ -12,13 +12,12 @@ export const addBreed = async ({ breedName, type }) => {
   return response;
 };
 
-export const addAnimal = async ({ name, sex, breedName, type }) => {
-  const response = await axios.post("/api/animal", {
-    name,
-    sex,
-    breedName,
-    type,
-  });
+export const addAnimal = async (formData) => {
+  const headers = {
+    "Content-Type": "form-data",
+  };
+
+  const response = await axios.post("/api/animal", formData, headers);
 
   return response;
 };

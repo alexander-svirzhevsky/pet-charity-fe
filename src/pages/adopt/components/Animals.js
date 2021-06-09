@@ -34,7 +34,7 @@ const Animals = () => {
   const history = useHistory();
 
   const { currentPage, pageSize, sex, type } = filterCriteria;
-  const { animals, loading } = useSelector((state) => state.animal);
+  const { animals, loading, count } = useSelector((state) => state.animal);
 
   const onPageChange = (page) => {
     setFilterCriteria({ ...filterCriteria, currentPage: page });
@@ -133,12 +133,12 @@ const Animals = () => {
                 onChange={onPageChange}
                 defaultCurrent={1}
                 current={currentPage}
-                total={animals.count}
+                total={count}
               />
             </List>
             <List>
               {animals.length !== 0 ? (
-                animals.animals.map((animal) => (
+                animals.map((animal) => (
                   <AnimalItem key={animal._id} animal={animal} />
                 ))
               ) : (
