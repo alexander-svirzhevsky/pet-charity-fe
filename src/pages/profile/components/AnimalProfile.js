@@ -19,7 +19,7 @@ const AnimalProfile = ({
       sex,
       type: { type },
       breedName: { breedName },
-      date,
+      avatar,
     },
     age,
     color,
@@ -32,7 +32,11 @@ const AnimalProfile = ({
   return (
     <List justifyContent="space-between" marginTop="50px">
       <Col>
-        <img src={defaultImg} alt={name} />
+        {avatar ? (
+          <img src={avatar} alt={name} />
+        ) : (
+          <img src={defaultImg} alt={name} />
+        )}
       </Col>
       <Col flex="0 0 45%">
         <SubTitle color={colors.secondary}>Hi, I'm</SubTitle>
