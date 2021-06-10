@@ -13,6 +13,7 @@ import {
 import { Hero, HeroContent } from "../../components/shared/styles/hero/hero";
 import { colors } from "../../components/shared/styles/global";
 import HeroCarousel from "./components/Carousel";
+import Translate from "../../assets/i18n/Translate";
 
 const Main = () => {
   return (
@@ -27,14 +28,13 @@ const Main = () => {
               lineHeight="1"
               fontSize="50px"
             >
-              Changing Lives Locally
+              {Translate("heroTitle")}
             </Title>
             <SubTitle color={colors.white} marginBottom="20px">
-              When you adopt pet, you’re changing their life and yours. Make a
-              difference for a homeless pet and bring love home.
+              {Translate("heroDesc")}
             </SubTitle>
             <Navigate to="/profile">
-              <span style={{ marginRight: "10px" }}>adopt</span>{" "}
+              <span style={{ marginRight: "10px" }}>{Translate("adopt")}</span>{" "}
               <ArrowRightOutlined />
             </Navigate>
           </HeroContent>
@@ -42,17 +42,9 @@ const Main = () => {
       </Hero>
       <Container>
         <List>
-          <Title>Give with Confidence</Title>
+          <Title>{Translate("aboutUs")}</Title>
           <SubTitle weight={"500"} marginBottom={"20px"}>
-            For 17 years in a row, we've earned the highest rating from Charity
-            Navigator and remain in the top 1% of all charities ranked. Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
+            {Translate("heroText")}
           </SubTitle>
         </List>
         <HeroCarousel />

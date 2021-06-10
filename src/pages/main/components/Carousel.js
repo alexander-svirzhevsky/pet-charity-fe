@@ -11,6 +11,7 @@ import {
   CarouselStatistics,
   CarouselDescription,
 } from "../../../components/shared/styles/hero/carousel";
+import Translate from "../../../assets/i18n/Translate";
 
 const HeroCarousel = () => {
   return (
@@ -19,9 +20,9 @@ const HeroCarousel = () => {
         <CarouselContent>
           <img src={CarouselImg_1} alt="charity"></img>
           <CarouselText style={{ position: "absolute" }}>
-            <CarouselStatistics>565k+ pets</CarouselStatistics>
+            <CarouselStatistics>{Translate("statistics")}</CarouselStatistics>
             <CarouselDescription>
-              saved each year through adoption
+              {Translate("statisticsDesc")}
             </CarouselDescription>
           </CarouselText>
         </CarouselContent>
@@ -30,9 +31,9 @@ const HeroCarousel = () => {
         <CarouselContent>
           <img src={CarouselImg_2} alt="charity"></img>
           <CarouselText style={{ position: "absolute" }}>
-            <CarouselStatistics>565k+ pets</CarouselStatistics>
+            <CarouselStatistics>{Translate("statistics")}</CarouselStatistics>
             <CarouselDescription>
-              saved each year through adoption
+              {Translate("statisticsDesc")}
             </CarouselDescription>
           </CarouselText>
         </CarouselContent>
@@ -41,9 +42,9 @@ const HeroCarousel = () => {
         <CarouselContent>
           <img src={CarouselImg_3} alt="charity"></img>
           <CarouselText style={{ position: "absolute" }}>
-            <CarouselStatistics>565k+ pets</CarouselStatistics>
+            <CarouselStatistics>{Translate("statistics")}</CarouselStatistics>
             <CarouselDescription>
-              saved each year through adoption
+              {Translate("statisticsDesc")}
             </CarouselDescription>
           </CarouselText>
         </CarouselContent>
@@ -52,9 +53,9 @@ const HeroCarousel = () => {
         <CarouselContent>
           <img src={CarouselImg_4} alt="charity"></img>
           <CarouselText style={{ position: "absolute" }}>
-            <CarouselStatistics>565k+ pets</CarouselStatistics>
+            <CarouselStatistics>{Translate("statistics")}</CarouselStatistics>
             <CarouselDescription>
-              saved each year through adoption
+              {Translate("statisticsDesc")}
             </CarouselDescription>
           </CarouselText>
         </CarouselContent>
