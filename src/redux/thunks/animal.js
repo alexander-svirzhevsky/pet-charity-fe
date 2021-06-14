@@ -17,7 +17,6 @@ export const getAnimals =
       const res = await axios.get(
         `/api/animal?page=${currentPage}&limit=${pageSize}&type=${type}&sex=${sex}`
       );
-      console.log(res);
       dispatch({
         type: GET_ANIMALS,
         payload: {

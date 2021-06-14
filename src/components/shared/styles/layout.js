@@ -79,6 +79,7 @@ const Section = styled.div`
   text-align: center;
   flex: ${(props) => props.flex || "0"};
   flex-direction: ${(props) => props.flexDirection || "none"};
+  margin-top: 100px;
 `;
 
 const List = styled.div`

@@ -13,7 +13,6 @@ const Item = styled.div`
 `;
 
 const Photo = styled.div`
-  width: 320px;
   height: 320px;
   margin-bottom: 10px;
 `;

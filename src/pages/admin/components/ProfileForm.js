@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, message } from "antd";
+import { Form, Input, message, InputNumber } from "antd";
 import { FileAddOutlined } from "@ant-design/icons";
 
 import {
@@ -27,12 +27,19 @@ const ProfileForm = () => {
 
   const onFinish = async () => {
     try {
+      if (!age) {
+        return message.error("Age must be more than 0");
+      }
       await addProfile({ name, age, color, size, story, phone, location });
 
       message.success("Profile saved!");
     } catch (err) {
       message.error(err.response.data.message);
     }
+  };
+
+  const onAgeChange = (value) => {
+    setFormData({ ...formData, age: value });
   };
 
   return (
@@ -69,12 +76,23 @@ const ProfileForm = () => {
               {
                 required: true,
               },
+              {
+                type: "number",
+                min: 0,
+                max: 99,
+              },
             ]}
           >
-            <Input
+            {/* <Input
               onChange={onChange}
               value={age}
               type="number"
+              name="age"
+              placeholder="Age"
+            /> */}
+            <InputNumber
+              onChange={onAgeChange}
+              value={age}
               name="age"
               placeholder="Age"
             />

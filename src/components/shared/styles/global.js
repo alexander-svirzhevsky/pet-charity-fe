@@ -117,6 +117,10 @@ input {
   max-width: 400px;
 }
 
+.ant-form-item-control-input-content, .ant-select-selection-item{
+  display: inline-flex;
+}
+
 `;
 
 export { GlobalStyle, colors };

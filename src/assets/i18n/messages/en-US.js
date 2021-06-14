@@ -1,6 +1,6 @@
 import { LOCALES } from "../locales";
 
-export default {
+const en = {
   [LOCALES.ENGLISH]: {
     heroTitle: "Change your life",
     heroDesc:
@@ -18,3 +18,4 @@ export default {
     statisticsDesc: "saved each year through adoption",
   },
 };
+export default en;
