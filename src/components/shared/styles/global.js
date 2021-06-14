@@ -26,10 +26,6 @@ body {
   transition: all 0.3s linear;
 }
 
-.ant-form-item-label > label {
-  color: ${({ theme }) => theme.label};
-}
-
 .wrapper {
   position: relative;
   width: 100%;
@@ -99,6 +95,10 @@ input {
 
 .ant-form-item {
   width: 100%;
+}
+
+.ant-form-item-label > label {
+  color: ${({ theme }) => theme.label};
 }
 
 .ant-carousel .slick-dots li button {
