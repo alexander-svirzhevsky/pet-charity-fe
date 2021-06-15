@@ -34,7 +34,6 @@ const App = () => {
   const themeMode = theme === "light" ? lightTheme : darkTheme;
 
   const [locale, setLocale] = useState(LOCALES.ENGLISH);
-  console.log(locale);
 
   return (
     <I18nProvider locale={locale}>

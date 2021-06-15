@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
+import { respondTo } from "./media/respondTo";
 
 const DefaultButton = styled(Button)`
   margin: ${(props) => props.margin || "20px"};
@@ -101,6 +102,10 @@ const Title = styled.h1`
   margin-top: ${(props) => props.marginTop || "0"};
   color: ${({ theme }) => theme.text};
   color: ${(props) => props.color};
+
+  ${respondTo.tablets`
+     font-size: 30px;
+   `}
 `;
 
 const Heading = styled.h2`
@@ -120,6 +125,10 @@ const SubTitle = styled.p`
   font-weight: ${(props) => props.weight || "900"};
   color: ${({ theme }) => theme.text};
   color: ${(props) => props.color};
+
+  ${respondTo.tablets`
+     font-size: 14px;
+   `}
 `;
 
 const BackgroundFill = styled.div`
@@ -172,6 +181,10 @@ const Navigate = styled(Link)`
     background-color: ${(props) => props.hoverColor || "#00b8e0"};
     color: #fff;
   }
+
+  ${respondTo.tablets`
+     padding: 10px 20px;
+   `}
 `;
 
 const AdditionalInfo = styled(Link)`
@@ -202,6 +215,8 @@ const Row = styled.div`
   flex-direction: ${(props) => props.flexDirection || "initial"};
   font-size: ${(props) => props.fontSize || "inherit"};
   font-weight: ${(props) => props.fontWeight || "inherit"};
+  white-space: nowrap;
+  flex-wrap: wrap;
 `;
 
 const Col = styled.div`

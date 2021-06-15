@@ -26,8 +26,6 @@ const AnimalForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onFinish = async () => {
-    console.log(formData);
-
     let formdata = new FormData();
 
     formdata.append("image", file);
@@ -51,7 +49,6 @@ const AnimalForm = () => {
   const props = {
     onRemove: () => {
       setFormData({ ...formData, file: "" });
-      console.log(formData);
     },
     beforeUpload: (file) => {
       setFormData({ ...formData, file: file });

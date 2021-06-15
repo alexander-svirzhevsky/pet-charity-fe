@@ -12,6 +12,7 @@ export const lightTheme = {
   defaultBtnHover: "#002169",
   red: "#dd2750",
   label: "#000",
+  burger: "#fff",
 };
 export const darkTheme = {
   body: "#0d1117",
@@ -27,4 +28,5 @@ export const darkTheme = {
   textHover: "#afb5bb",
   red: "#dd2750",
   label: "#fff",
+  burger: "#161b22",
 };
