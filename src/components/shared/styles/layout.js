@@ -90,6 +90,11 @@ const List = styled.div`
   flex-wrap: wrap;
   margin-top: ${(props) => props.marginTop || "40px"};
   margin-bottom: 10px;
+
+  ${respondTo.tablets`
+     margin-bottom: 0;
+     flex-direction: column;
+   `}
 `;
 
 const Title = styled.h1`
@@ -133,7 +138,7 @@ const SubTitle = styled.p`
 
 const BackgroundFill = styled.div`
   width: 100%;
-  height: ${(props) => props.height || "90vh"};
+  min-height: ${(props) => props.height || "100vh"};
   background-image: url(${(props) => props.image});
   background-position: center center;
   background-repeat: no-repeat;
@@ -221,6 +226,14 @@ const Row = styled.div`
 
 const Col = styled.div`
   flex: ${(props) => props.flex || "0 0 50%"};
+
+  ${respondTo.tablets`
+     width: 75%;
+   `}
+
+  ${respondTo.phones`
+     width: 100%;
+   `}
 `;
 
 const Descriptions = styled.div`
@@ -232,6 +245,14 @@ const FormContent = styled.div`
   flex-direction: column;
   margin-top: 50px;
   width: 50%;
+
+  ${respondTo.phones`
+     width: 100%;
+   `}
+`;
+
+const Text = styled.span`
+  color: ${({ theme }) => theme.text};
 `;
 
 export {
@@ -255,4 +276,5 @@ export {
   FormContent,
   DefaultButton,
   DeleteButton,
+  Text,
 };

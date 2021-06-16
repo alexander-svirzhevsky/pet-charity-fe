@@ -10,6 +10,8 @@ import {
 } from "../../../components/shared/styles/layout";
 
 const AnimalForm = () => {
+  const [form] = Form.useForm();
+
   const { Option } = Select;
 
   const [formData, setFormData] = useState({
@@ -37,6 +39,7 @@ const AnimalForm = () => {
       await addAnimal(formdata);
 
       message.success("Animal saved!");
+      form.resetFields();
     } catch (err) {
       message.error(err.response.data.message);
     }
@@ -60,6 +63,7 @@ const AnimalForm = () => {
     <Container textAling="center">
       <FormContent>
         <Form
+          form={form}
           name="basic"
           initialValues={{
             remember: true,

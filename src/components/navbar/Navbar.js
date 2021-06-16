@@ -53,7 +53,7 @@ const Navbar = ({ theme, themeToggler, setLocale }) => {
             <NavbarItem to="/profile" text={Translate("findPet")} />
             {isAuthenticated ? (
               <User>
-                {user && <UserName>{user.data.name}</UserName>}
+                {user && <UserName>{user.data.name.split(" ", 1)}</UserName>}
                 <LogoutOutlined
                   onClick={logOut}
                   style={{ color: colors.secondary }}

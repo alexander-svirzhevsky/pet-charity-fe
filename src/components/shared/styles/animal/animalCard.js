@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 const Item = styled.div`
   margin: 20px auto;
-  border: 1px solid #efefef;
+  border: 1px solid;
+  border-color: ${({ theme }) => theme.borderCard};
   width: 320px;
   display: flex;
   flex-direction: column;

@@ -20,7 +20,11 @@ const Navigation = styled(Link)`
 `;
 
 const NavList = styled.div`
-  transition: all 0.3s linear;
+  transition: transform 0.3s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   ${respondTo.phones`
     display: flex;
     flex-direction: column;

@@ -10,6 +10,8 @@ import {
 import { addProfile } from "../../../services/animal";
 
 const ProfileForm = () => {
+  const [form] = Form.useForm();
+
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -33,6 +35,7 @@ const ProfileForm = () => {
       await addProfile({ name, age, color, size, story, phone, location });
 
       message.success("Profile saved!");
+      form.resetFields();
     } catch (err) {
       message.error(err.response.data.message);
     }
@@ -46,6 +49,7 @@ const ProfileForm = () => {
     <Container textAling="center">
       <FormContent>
         <Form
+          form={form}
           name="basic"
           initialValues={{
             remember: true,

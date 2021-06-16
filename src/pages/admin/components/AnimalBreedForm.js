@@ -9,6 +9,8 @@ import {
 import { addBreed } from "../../../services/animal";
 
 const AnimalBreedForm = () => {
+  const [form] = Form.useForm();
+
   const [formData, setFormData] = useState({
     breedName: "",
     type: "",
@@ -23,6 +25,7 @@ const AnimalBreedForm = () => {
       await addBreed({ breedName, type });
 
       message.success("Breed saved!");
+      form.resetFields();
     } catch (err) {
       message.error(err.response.data.message);
     }
@@ -31,7 +34,8 @@ const AnimalBreedForm = () => {
   return (
     <FormArea>
       <Form
-        name="basic"
+        form={form}
+        name="breed"
         initialValues={{
           remember: true,
         }}

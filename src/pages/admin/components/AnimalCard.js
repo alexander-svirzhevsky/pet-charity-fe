@@ -42,8 +42,6 @@ const AnimalCard = ({
       <Breed marginBottom="25px">{breedName}</Breed>
       <DeleteButton
         onClick={() => onFinish(_id)}
-        backgroundColor={colors.red}
-        borderColor={colors.red}
         margin="0"
         icon={<DeleteOutlined />}
       >
