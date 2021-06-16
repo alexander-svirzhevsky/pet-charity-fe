@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 const Item = styled.div`
   margin: 20px auto;
-  border: 1px solid #efefef;
+  border: 1px solid;
+  border-color: ${({ theme }) => theme.borderCard};
   width: 320px;
   display: flex;
   flex-direction: column;
@@ -13,7 +14,6 @@ const Item = styled.div`
 `;
 
 const Photo = styled.div`
-  width: 320px;
   height: 320px;
   margin-bottom: 10px;
 `;

@@ -15,7 +15,10 @@ import Translate from "../../../assets/i18n/Translate";
 
 const HeroCarousel = () => {
   return (
-    <Carousel autoplay style={{ marginBottom: "100px" }}>
+    <Carousel
+      //  autoplay
+      style={{ marginBottom: "100px" }}
+    >
       <div>
         <CarouselContent>
           <img src={CarouselImg_1} alt="charity"></img>

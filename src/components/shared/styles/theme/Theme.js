@@ -12,6 +12,10 @@ export const lightTheme = {
   defaultBtnHover: "#002169",
   red: "#dd2750",
   label: "#000",
+  burger: "#fff",
+  authBackground: "rgba(255,255,255,0.77)",
+  authTitle: "#000",
+  borderCard: "#efefef",
 };
 export const darkTheme = {
   body: "#0d1117",
@@ -27,4 +31,8 @@ export const darkTheme = {
   textHover: "#afb5bb",
   red: "#dd2750",
   label: "#fff",
+  burger: "#161b22",
+  authBackground: "rgb(35 35 35 / 78%)",
+  authTitle: "#fff",
+  borderCard: "#161b22",
 };

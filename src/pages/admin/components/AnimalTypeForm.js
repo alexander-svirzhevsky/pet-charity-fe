@@ -9,6 +9,8 @@ import {
 import { addType } from "../../../services/animal";
 
 const AnimalTypeForm = () => {
+  const [form] = Form.useForm();
+
   const [type, setType] = useState("");
 
   const onFinish = async () => {
@@ -16,6 +18,7 @@ const AnimalTypeForm = () => {
       await addType(type);
 
       message.success("Animal type saved!");
+      form.resetFields();
     } catch (err) {
       message.error(err.response.data.message);
     }
@@ -26,7 +29,8 @@ const AnimalTypeForm = () => {
   return (
     <FormArea>
       <Form
-        name="basic"
+        form={form}
+        name="type"
         initialValues={{
           remember: true,
         }}

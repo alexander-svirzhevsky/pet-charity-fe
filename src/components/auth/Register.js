@@ -12,6 +12,7 @@ import {
   Title,
   BackgroundFill,
   DefaultButton,
+  Text,
 } from "../shared/styles/layout";
 import { colors } from "../shared/styles/global";
 import {
@@ -54,9 +55,7 @@ const Register = () => {
       <Container>
         <AuthContent>
           <LoginContent>
-            <Title color={colors.black} weight={"600"}>
-              Register
-            </Title>
+            <Title weight={"600"}>Register</Title>
             <Form
               name="basic"
               initialValues={{
@@ -133,19 +132,6 @@ const Register = () => {
                   placeholder="Confirm password"
                 />
               </Form.Item>
-              {/* <Button
-                style={{
-                  marginBottom: "10px",
-                  backgroundColor: colors.primary,
-                  borderColor: colors.primary,
-                }}
-                type="primary"
-                htmlType="submit"
-                size="large"
-                icon={<LoginOutlined />}
-              >
-                Register
-              </Button> */}
               <DefaultButton
                 htmlType="submit"
                 size="large"
@@ -156,10 +142,10 @@ const Register = () => {
             </Form>
           </LoginContent>
           <AuthGoogle>
-            <span>
+            <Text>
               If you don't have an account you also can sign in using your
               Google account
-            </span>
+            </Text>
             <GoogleAuth />
           </AuthGoogle>
         </AuthContent>

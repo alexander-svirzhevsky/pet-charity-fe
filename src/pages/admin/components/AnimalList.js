@@ -55,10 +55,10 @@ const AnimalList = () => {
     if (parsed.type) filter.type = parsed.type;
     if (parsed.sex) filter.sex = parsed.sex;
 
-    setFilterCriteria({
-      ...filterCriteria,
+    setFilterCriteria((prevState) => ({
+      ...prevState,
       ...filter,
-    });
+    }));
   }, []);
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, message, Upload, Button } from "antd";
+import { Form, Input, message, Upload, Button, Select } from "antd";
 import { FileAddOutlined, UploadOutlined } from "@ant-design/icons";
 
 import { addAnimal } from "../../../services/animal";
@@ -10,6 +10,10 @@ import {
 } from "../../../components/shared/styles/layout";
 
 const AnimalForm = () => {
+  const [form] = Form.useForm();
+
+  const { Option } = Select;
+
   const [formData, setFormData] = useState({
     file: "",
     name: "",
@@ -32,19 +36,22 @@ const AnimalForm = () => {
     formdata.append("breedName", breedName);
     formdata.append("type", type);
     try {
-      console.log(formData);
       await addAnimal(formdata);
 
       message.success("Animal saved!");
+      form.resetFields();
     } catch (err) {
       message.error(err.response.data.message);
     }
   };
 
+  const onGenderChange = (value) => {
+    setFormData({ ...formData, sex: value });
+  };
+
   const props = {
     onRemove: () => {
       setFormData({ ...formData, file: "" });
-      console.log(formData);
     },
     beforeUpload: (file) => {
       setFormData({ ...formData, file: file });
@@ -56,6 +63,7 @@ const AnimalForm = () => {
     <Container textAling="center">
       <FormContent>
         <Form
+          form={form}
           name="basic"
           initialValues={{
             remember: true,
@@ -80,21 +88,18 @@ const AnimalForm = () => {
             />
           </Form.Item>
           <Form.Item
+            name="gender"
             label="Gender"
-            name="sex"
             rules={[
               {
                 required: true,
               },
             ]}
           >
-            <Input
-              onChange={onChange}
-              value={sex}
-              type="text"
-              name="sex"
-              placeholder="Gender"
-            />
+            <Select onChange={onGenderChange} allowClear>
+              <Option value="he">male</Option>
+              <Option value="she">female</Option>
+            </Select>
           </Form.Item>
           <Form.Item
             label="Breed Name"

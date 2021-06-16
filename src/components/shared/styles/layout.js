@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
+import { respondTo } from "./media/respondTo";
 
 const DefaultButton = styled(Button)`
   margin: ${(props) => props.margin || "20px"};
@@ -79,6 +80,7 @@ const Section = styled.div`
   text-align: center;
   flex: ${(props) => props.flex || "0"};
   flex-direction: ${(props) => props.flexDirection || "none"};
+  margin-top: 100px;
 `;
 
 const List = styled.div`
@@ -88,6 +90,11 @@ const List = styled.div`
   flex-wrap: wrap;
   margin-top: ${(props) => props.marginTop || "40px"};
   margin-bottom: 10px;
+
+  ${respondTo.tablets`
+     margin-bottom: 0;
+     flex-direction: column;
+   `}
 `;
 
 const Title = styled.h1`
@@ -100,6 +107,10 @@ const Title = styled.h1`
   margin-top: ${(props) => props.marginTop || "0"};
   color: ${({ theme }) => theme.text};
   color: ${(props) => props.color};
+
+  ${respondTo.tablets`
+     font-size: 30px;
+   `}
 `;
 
 const Heading = styled.h2`
@@ -119,11 +130,15 @@ const SubTitle = styled.p`
   font-weight: ${(props) => props.weight || "900"};
   color: ${({ theme }) => theme.text};
   color: ${(props) => props.color};
+
+  ${respondTo.tablets`
+     font-size: 14px;
+   `}
 `;
 
 const BackgroundFill = styled.div`
   width: 100%;
-  height: ${(props) => props.height || "90vh"};
+  min-height: ${(props) => props.height || "100vh"};
   background-image: url(${(props) => props.image});
   background-position: center center;
   background-repeat: no-repeat;
@@ -171,6 +186,10 @@ const Navigate = styled(Link)`
     background-color: ${(props) => props.hoverColor || "#00b8e0"};
     color: #fff;
   }
+
+  ${respondTo.tablets`
+     padding: 10px 20px;
+   `}
 `;
 
 const AdditionalInfo = styled(Link)`
@@ -201,10 +220,20 @@ const Row = styled.div`
   flex-direction: ${(props) => props.flexDirection || "initial"};
   font-size: ${(props) => props.fontSize || "inherit"};
   font-weight: ${(props) => props.fontWeight || "inherit"};
+  white-space: nowrap;
+  flex-wrap: wrap;
 `;
 
 const Col = styled.div`
   flex: ${(props) => props.flex || "0 0 50%"};
+
+  ${respondTo.tablets`
+     width: 75%;
+   `}
+
+  ${respondTo.phones`
+     width: 100%;
+   `}
 `;
 
 const Descriptions = styled.div`
@@ -216,6 +245,14 @@ const FormContent = styled.div`
   flex-direction: column;
   margin-top: 50px;
   width: 50%;
+
+  ${respondTo.phones`
+     width: 100%;
+   `}
+`;
+
+const Text = styled.span`
+  color: ${({ theme }) => theme.text};
 `;
 
 export {
@@ -239,4 +276,5 @@ export {
   FormContent,
   DefaultButton,
   DeleteButton,
+  Text,
 };

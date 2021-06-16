@@ -19,7 +19,11 @@ const Main = () => {
   return (
     <>
       <Hero>
-        <img src={HeroImg} alt="charity"></img>
+        <img
+          style={{ minHeight: "400px", objectFit: "cover" }}
+          src={HeroImg}
+          alt="charity"
+        ></img>
         <Container>
           <HeroContent>
             <Title

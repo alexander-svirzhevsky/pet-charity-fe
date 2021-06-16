@@ -13,8 +13,8 @@ import {
   SubLink,
   BackgroundFill,
   DefaultButton,
+  Text,
 } from "../shared/styles/layout";
-import { colors } from "../shared/styles/global";
 import {
   AuthContent,
   LoginContent,
@@ -49,9 +49,7 @@ const Login = () => {
       <Container>
         <AuthContent>
           <LoginContent>
-            <Title color={colors.black} weight={"600"}>
-              Log in
-            </Title>
+            <Title weight={"600"}>Log in</Title>
             <Form
               name="basic"
               initialValues={{
@@ -102,16 +100,14 @@ const Login = () => {
               >
                 Log in
               </DefaultButton>
-              <SubLink color={colors.black} to="/forgot-password">
-                Forgot the password?
-              </SubLink>
+              <SubLink to="/forgot-password">Forgot the password?</SubLink>
             </Form>
           </LoginContent>
           <AuthGoogle>
-            <span>
+            <Text>
               If you don't have an account you also can sign in using your
               Google account
-            </span>
+            </Text>
             <GoogleAuth />
           </AuthGoogle>
         </AuthContent>

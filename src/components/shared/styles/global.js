@@ -26,10 +26,6 @@ body {
   transition: all 0.3s linear;
 }
 
-.ant-form-item-label > label {
-  color: ${({ theme }) => theme.label};
-}
-
 .wrapper {
   position: relative;
   width: 100%;
@@ -101,6 +97,10 @@ input {
   width: 100%;
 }
 
+.ant-form-item-label > label {
+  color: ${({ theme }) => theme.label};
+}
+
 .ant-carousel .slick-dots li button {
     background: #fff;
 }
@@ -115,6 +115,10 @@ input {
 
 .ant-form-item-control-input {
   max-width: 400px;
+}
+
+.ant-form-item-control-input-content, .ant-select-selection-item{
+  display: inline-flex;
 }
 
 `;

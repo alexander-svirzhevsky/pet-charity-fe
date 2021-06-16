@@ -1,4 +1,5 @@
 import axios from "axios";
+import { message } from "antd";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -74,6 +75,7 @@ export const register =
 
       dispatch(loadUser());
     } catch (error) {
+      message.error(error.response.data.message);
       dispatch({
         type: REGISTER_FAIL,
       });
@@ -100,6 +102,8 @@ export const login =
 
       dispatch(loadUser());
     } catch (error) {
+      message.error(error.response.data.message);
+
       dispatch({
         type: LOGIN_FAIL,
       });

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, message } from "antd";
+import { Form, Input, message, InputNumber } from "antd";
 import { FileAddOutlined } from "@ant-design/icons";
 
 import {
@@ -10,6 +10,8 @@ import {
 import { addProfile } from "../../../services/animal";
 
 const ProfileForm = () => {
+  const [form] = Form.useForm();
+
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -27,18 +29,27 @@ const ProfileForm = () => {
 
   const onFinish = async () => {
     try {
+      if (!age) {
+        return message.error("Age must be more than 0");
+      }
       await addProfile({ name, age, color, size, story, phone, location });
 
       message.success("Profile saved!");
+      form.resetFields();
     } catch (err) {
       message.error(err.response.data.message);
     }
+  };
+
+  const onAgeChange = (value) => {
+    setFormData({ ...formData, age: value });
   };
 
   return (
     <Container textAling="center">
       <FormContent>
         <Form
+          form={form}
           name="basic"
           initialValues={{
             remember: true,
@@ -69,12 +80,23 @@ const ProfileForm = () => {
               {
                 required: true,
               },
+              {
+                type: "number",
+                min: 0,
+                max: 99,
+              },
             ]}
           >
-            <Input
+            {/* <Input
               onChange={onChange}
               value={age}
               type="number"
+              name="age"
+              placeholder="Age"
+            /> */}
+            <InputNumber
+              onChange={onAgeChange}
+              value={age}
               name="age"
               placeholder="Age"
             />
