@@ -63,8 +63,9 @@ const Animals = () => {
       ...prevState,
       ...filter,
     }));
+    /*eslint-disable */
   }, []);
-
+  /*eslint-enable */
   useEffect(() => {
     const query = {};
 
@@ -82,12 +83,13 @@ const Animals = () => {
 
     history.push({
       pathname: "/profile",
-      // search: `?page=${currentPage}&type=${type}&sex=${sex}`,
       search: queryString.stringify(query),
     });
 
     dispatch(getAnimals(currentPage, pageSize, type, sex));
+    /*eslint-disable */
   }, [dispatch, filterCriteria]);
+  /*eslint-enable */
 
   return (
     <>

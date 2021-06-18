@@ -20,6 +20,7 @@ const ResetPassword = () => {
   const history = useHistory();
 
   const onFinish = async () => {
+    console.log(resetLink);
     try {
       if (newPass !== confirmNewPass) {
         message.error("Password do not match");
@@ -42,7 +43,7 @@ const ResetPassword = () => {
       ...prevData,
       resetLink,
     }));
-  }, []);
+  }, [history.location.pathname]);
 
   return (
     <BackgroundFill image={LoginImg}>

@@ -1,7 +1,6 @@
 import React, { useEffect, Suspense, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "./style/custom-antd.css";
-// import "antd/dist/antd.css";
+import "antd/dist/antd.css";
 import setAuthToken from "./redux/helper/setAuthToken";
 import { loadUser } from "./redux/thunks/auth";
 import { Provider } from "react-redux";

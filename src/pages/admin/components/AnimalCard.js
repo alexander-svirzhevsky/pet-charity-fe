@@ -7,7 +7,6 @@ import {
   Name,
   Breed,
 } from "../../../components/shared/styles/animal/animalCard";
-import { colors } from "../../../components/shared/styles/global";
 import { DeleteButton } from "../../../components/shared/styles/layout";
 
 const AnimalCard = ({

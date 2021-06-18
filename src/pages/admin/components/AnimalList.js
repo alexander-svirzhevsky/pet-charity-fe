@@ -59,8 +59,9 @@ const AnimalList = () => {
       ...prevState,
       ...filter,
     }));
+    /*eslint-disable */
   }, []);
-
+  /*eslint-enable */
   useEffect(() => {
     const query = {};
 
@@ -78,12 +79,13 @@ const AnimalList = () => {
 
     history.push({
       pathname: "/admin/delete",
-      // search: `?page=${currentPage}&type=${type}&sex=${sex}`,
       search: queryString.stringify(query),
     });
 
     dispatch(getAnimals(currentPage, pageSize, type, sex));
+    /*eslint-disable */
   }, [dispatch, filterCriteria]);
+  /*eslint-enable */
 
   return (
     <Container>

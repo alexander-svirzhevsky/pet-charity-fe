@@ -14,7 +14,6 @@ import {
   DefaultButton,
   Text,
 } from "../shared/styles/layout";
-import { colors } from "../shared/styles/global";
 import {
   AuthContent,
   LoginContent,
